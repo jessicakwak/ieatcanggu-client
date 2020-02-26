@@ -9,7 +9,7 @@ class Thumbnail extends React.Component {
   }
   render() {
     return (
-      <a href="restaurant.html" className="restaurant">
+      <a href="/restaurant" className="restaurant">
         <div
           className="photo"
           style={{ backgroundImage: `url(${this.state.restaurant.imgUrl})` }}

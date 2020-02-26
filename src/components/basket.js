@@ -20,7 +20,9 @@ class Basket extends React.Component {
           {this.state.currentBasket.map((e, i) => {
             return (
               <li key={i}>
-                <i className="fas fa-minus"></i>
+                <span onClick={x => this.props.remove(e)}>
+                  <i className="fas fa-minus"></i>
+                </span>
                 <span className="name">{e.name}</span>
                 <span className="price">${e.price}</span>
               </li>

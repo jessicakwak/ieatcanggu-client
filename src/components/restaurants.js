@@ -7,28 +7,28 @@ class Restaurants extends React.Component {
         <div id="logo"></div>
         <ul>
           <li>
-            <a href="/">
-              <span>Italian</span>
+            <a href="/" style={{ borderColor: "#DD3C3E" }}>
+              <span style={{ color: "#DD3C3E" }}>Italian</span>
             </a>
           </li>
           <li>
-            <a href="/">
-              <span>Burger</span>
+            <a href="/" style={{ borderColor: "#3A3335" }}>
+              <span style={{ color: "#3A3335" }}>Burger</span>
             </a>
           </li>
           <li>
-            <a href="/">
-              <span>Vegetarian</span>
+            <a href="/" style={{ borderColor: "#40C9A2" }}>
+              <span style={{ color: "#40C9A2" }}>Vegetarian</span>
             </a>
           </li>
           <li>
-            <a href="/">
-              <span>Breakfast</span>
+            <a href="/" style={{ borderColor: "#F2B430" }}>
+              <span style={{ color: "#F2B430" }}>Breakfast</span>
             </a>
           </li>
           <li>
-            <a href="/">
-              <span>Japanese</span>
+            <a href="/" style={{ borderColor: "#590348" }}>
+              <span style={{ color: "#590348" }}>Japanese</span>
             </a>
           </li>
         </ul>

@@ -286,3 +286,7 @@ li.Breakfast {
 li.Japanese {
   background-color: #590348;
 }
+
+#add {
+  display: block;
+}

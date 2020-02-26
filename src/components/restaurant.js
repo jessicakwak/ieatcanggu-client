@@ -31,13 +31,21 @@ class Restaurant extends React.Component {
         { name: "Chocolate fudge brownie", foodCategory: "Dessert", price: 60 },
         { name: "Bintang", foodCategory: "Drinks", price: 1 }
       ]
-    }
+    },
+    currentBasket: []
   };
   componentWillMount() {
     {
       /*axios please get detail restaurant info for specific id*/
     }
   }
+
+  addBasket = food => {
+    let basket = this.state.currentBasket;
+    basket.push({ name: food.name, price: food.price });
+    console.log(basket);
+    this.setState({ currentBasket: basket });
+  };
   render() {
     return (
       <div id="restaurant">
@@ -64,8 +72,8 @@ class Restaurant extends React.Component {
             </span>
           </div>
         </div>
-        <Menu menu={this.state.restaurant.menu} />
-        <Basket />
+        <Menu menu={this.state.restaurant.menu} addBasket={this.addBasket} />
+        <Basket currentBasket={this.state.currentBasket} />
       </div>
     );
   }

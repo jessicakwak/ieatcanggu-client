@@ -1,22 +1,29 @@
 import React from "react";
 
 class Basket extends React.Component {
+  state = {
+    currentBasket: this.props.currentBasket
+  };
+
+  componentWillReceiveProps(nextProp) {
+    this.setState({ currentBasket: nextProp.currentBasket });
+  }
   render() {
     return (
       <div id="basket">
         <h2>Your Basket</h2>
         <ul>
-          <li>
-            <i className="fas fa-minus"></i>
-            <span className="name">Avocado Madness</span>
-            <span className="price">$12</span>
-          </li>
-          <li>
-            <i className="fas fa-minus"></i>
-            <span className="name">Tutti Frutti</span>
-            <span className="price">$10</span>
-          </li>
+          {this.state.currentBasket.map((e, i) => {
+            return (
+              <li>
+                <i className="fas fa-minus"></i>
+                <span className="name">{e.name}</span>
+                <span className="price">${e.price}</span>
+              </li>
+            );
+          })}
         </ul>
+
         <div id="total">
           <span>Total</span>
           <span className="price">$22</span>

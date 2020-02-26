@@ -9,6 +9,7 @@ class Menu extends React.Component {
       menu: nextProp.menu
     });
   }
+
   render() {
     return (
       <div id="menu">
@@ -22,7 +23,10 @@ class Menu extends React.Component {
                 <li>
                   <span className="name">{e.name}</span>
                   <span className="price">
-                    ${e.price} <i className="fas fa-plus"></i>
+                    ${e.price}{" "}
+                    <span onClick={x => this.props.addBasket(e)}>
+                      <i className="fas fa-plus"></i>
+                    </span>
                   </span>
                 </li>
               );
@@ -37,7 +41,10 @@ class Menu extends React.Component {
                 <li>
                   <span className="name">{e.name}</span>
                   <span className="price">
-                    ${e.price} <i className="fas fa-plus"></i>
+                    ${e.price}
+                    <span onClick={x => this.props.addBasket(e)}>
+                      <i className="fas fa-plus"></i>
+                    </span>
                   </span>
                 </li>
               );
@@ -53,7 +60,10 @@ class Menu extends React.Component {
                 <li>
                   <span className="name">{e.name}</span>
                   <span className="price">
-                    ${e.price} <i className="fas fa-plus"></i>
+                    ${e.price}{" "}
+                    <span onClick={x => this.props.addBasket(e)}>
+                      <i className="fas fa-plus"></i>
+                    </span>
                   </span>
                 </li>
               );
@@ -68,7 +78,10 @@ class Menu extends React.Component {
                 <li>
                   <span className="name">{e.name}</span>
                   <span className="price">
-                    ${e.price} <i className="fas fa-plus"></i>
+                    ${e.price}{" "}
+                    <span onClick={x => this.props.addBasket(e)}>
+                      <i className="fas fa-plus"></i>
+                    </span>
                   </span>
                 </li>
               );

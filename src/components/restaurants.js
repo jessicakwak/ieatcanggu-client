@@ -3,21 +3,43 @@ import React from "react";
 class Restaurants extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <nav>
+        <div id="logo"></div>
+        <ul>
+          <li>
+            <a href="/">
+              <span>Italian</span>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <span>Burger</span>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <span>Vegetarian</span>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <span>Breakfast</span>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <span>Japanese</span>
+            </a>
+          </li>
+        </ul>
+        <select>
+          <option value="">Sort by:</option>
+          <option value="">Price</option>
+          <option value="">Delivery Time</option>
+          <option value="">Likes</option>
+        </select>
+        <input type="text" placeholder="Search..." />
+      </nav>
     );
   }
 }

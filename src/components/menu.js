@@ -1,60 +1,78 @@
 import React from "react";
 
 class Menu extends React.Component {
+  state = {
+    menu: this.props.menu
+  };
+  componentWillReceiveProps(nextProp) {
+    this.setState({
+      menu: nextProp.menu
+    });
+  }
   render() {
     return (
       <div id="menu">
         <h2>Menu</h2>
-        <h3>Smoothie Bowls</h3>
+        <h3>Appetizer</h3>
         <ul>
-          <li>
-            <span className="name">Green Godess</span>
-            <span className="price">
-              $5 <i className="fas fa-plus"></i>
-            </span>
-          </li>
-          <li>
-            <span className="name">Tutti Frutti</span>
-            <span className="price">
-              $10 <i className="fas fa-plus"></i>
-            </span>
-          </li>
-          <li>
-            <span className="name">Dragonball</span>
-            <span className="price">
-              $10 <i className="fas fa-plus"></i>
-            </span>
-          </li>
+          {this.state.menu
+            .filter(x => x.foodCategory == "Appetizer")
+            .map((e, i) => {
+              return (
+                <li>
+                  <span className="name">{e.name}</span>
+                  <span className="price">
+                    ${e.price} <i className="fas fa-plus"></i>
+                  </span>
+                </li>
+              );
+            })}
         </ul>
-        <h3>Veggie Bowls</h3>
+        <h3>Main Dish</h3>
         <ul>
-          <li>
-            <span className="name">Avocado Madness</span>
-            <span className="price">
-              $12 <i className="fas fa-plus"></i>
-            </span>
-          </li>
-          <li>
-            <span className="name">Burrito Bandito</span>
-            <span className="price">
-              $15 <i className="fas fa-plus"></i>
-            </span>
-          </li>
+          {this.state.menu
+            .filter(x => x.foodCategory == "Main Dish")
+            .map((e, i) => {
+              return (
+                <li>
+                  <span className="name">{e.name}</span>
+                  <span className="price">
+                    ${e.price} <i className="fas fa-plus"></i>
+                  </span>
+                </li>
+              );
+            })}
+        </ul>
+
+        <h3>Dessert</h3>
+        <ul>
+          {this.state.menu
+            .filter(x => x.foodCategory == "Dessert")
+            .map((e, i) => {
+              return (
+                <li>
+                  <span className="name">{e.name}</span>
+                  <span className="price">
+                    ${e.price} <i className="fas fa-plus"></i>
+                  </span>
+                </li>
+              );
+            })}
         </ul>
         <h3>Drinks</h3>
         <ul>
-          <li>
-            <span className="name">Pure Coconut</span>
-            <span className="price">
-              $4 <i className="fas fa-plus"></i>
-            </span>
-          </li>
-          <li>
-            <span className="name">Choco Lava</span>
-            <span className="price">
-              $8 <i className="fas fa-plus"></i>
-            </span>
-          </li>
+          {this.state.menu
+            .filter(x => x.foodCategory == "Drinks")
+            .map((e, i) => {
+              return (
+                <li>
+                  <span className="name">{e.name}</span>
+                  <span className="price">
+                    ${e.price} <i className="fas fa-plus"></i>
+                  </span>
+                </li>
+              );
+            })}
         </ul>
       </div>
     );

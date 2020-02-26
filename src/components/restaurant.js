@@ -18,12 +18,17 @@ class Restaurant extends React.Component {
       likes: 201,
       time: 20,
       menu: [
-        { name: "Green Goddess", foodCategory: "Appetizer", price: 10 },
+        {
+          name: "Gimme some spring rolls",
+          foodCategory: "Appetizer",
+          price: 10
+        },
         { name: "Dragonball", foodCategory: "Appetizer", price: 20 },
         { name: "Pure Coconut", foodCategory: "Main Dish", price: 30 },
         { name: "Give me food", foodCategory: "Main Dish", price: 40 },
         { name: "I'm hungrry", foodCategory: "Dessert", price: 50 },
-        { name: "Chocolate fudge brownie", foodCategory: "Dessert", price: 60 }
+        { name: "Chocolate fudge brownie", foodCategory: "Dessert", price: 60 },
+        { name: "Bintang", foodCategory: "Drinks", price: 1 }
       ]
     }
   };
@@ -58,7 +63,7 @@ class Restaurant extends React.Component {
             </span>
           </div>
         </div>
-        <Menu />
+        <Menu menu={this.state.restaurant.menu} />
         <div id="basket">
           <h2>Your Basket</h2>
           <ul>

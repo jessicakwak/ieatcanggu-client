@@ -32,7 +32,8 @@ class Restaurant extends React.Component {
         { name: "Bintang", foodCategory: "Drinks", price: 1 }
       ]
     },
-    currentBasket: []
+    currentBasket: [],
+    totalPrice: 0
   };
   componentWillMount() {
     {
@@ -43,8 +44,10 @@ class Restaurant extends React.Component {
   addBasket = food => {
     let basket = this.state.currentBasket;
     basket.push({ name: food.name, price: food.price });
-    console.log(basket);
-    this.setState({ currentBasket: basket });
+    let total = 0;
+    basket.forEach(e => (total += e.price));
+    this.setState({ currentBasket: basket, totalPrice: total });
+    console.log(this.state.totalPrice);
   };
   render() {
     return (
@@ -73,7 +76,10 @@ class Restaurant extends React.Component {
           </div>
         </div>
         <Menu menu={this.state.restaurant.menu} addBasket={this.addBasket} />
-        <Basket currentBasket={this.state.currentBasket} />
+        <Basket
+          currentBasket={this.state.currentBasket}
+          totalPrice={this.state.totalPrice}
+        />
       </div>
     );
   }

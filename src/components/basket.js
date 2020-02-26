@@ -2,11 +2,15 @@ import React from "react";
 
 class Basket extends React.Component {
   state = {
-    currentBasket: this.props.currentBasket
+    currentBasket: this.props.currentBasket,
+    totalPrice: this.props.totalPrice
   };
 
   componentWillReceiveProps(nextProp) {
-    this.setState({ currentBasket: nextProp.currentBasket });
+    this.setState({
+      currentBasket: nextProp.currentBasket,
+      totalPrice: nextProp.totalPrice
+    });
   }
   render() {
     return (
@@ -15,7 +19,7 @@ class Basket extends React.Component {
         <ul>
           {this.state.currentBasket.map((e, i) => {
             return (
-              <li>
+              <li key={i}>
                 <i className="fas fa-minus"></i>
                 <span className="name">{e.name}</span>
                 <span className="price">${e.price}</span>
@@ -26,7 +30,7 @@ class Basket extends React.Component {
 
         <div id="total">
           <span>Total</span>
-          <span className="price">$22</span>
+          <span className="price">${this.state.totalPrice}</span>
           <button>Place Order</button>
         </div>
       </div>

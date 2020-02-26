@@ -160,6 +160,16 @@ nav input {
 
 /* Gallery */
 
+#grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 20px;
+}
+#mainImg {
+  background-size: cover;
+  border-radius: 8px;
+}
+
 #gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;

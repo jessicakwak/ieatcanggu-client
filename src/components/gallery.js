@@ -9,15 +9,23 @@ class Gallery extends React.Component {
   }
   render() {
     return (
-      <div id="gallery">
-        {this.state.images.map((e, i) => {
-          return (
-            <div
-              className="photo"
-              style={{ backgroundImage: `url(${e})` }}
-            ></div>
-          );
-        })}
+      <div id="grid">
+        <div
+          id="mainImg"
+          style={{ backgroundImage: `url(${this.state.images[0]})` }}
+        ></div>
+        <div id="gallery">
+          {this.state.images.map((e, i) => {
+            if (i > 0) {
+              return (
+                <div
+                  className="photo"
+                  style={{ backgroundImage: `url(${e})` }}
+                ></div>
+              );
+            }
+          })}
+        </div>
       </div>
     );
   }

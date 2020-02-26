@@ -8,6 +8,7 @@ class Restaurant extends React.Component {
   state = {
     restaurant: {
       images: [
+        "https://bit.ly/2u17mMF",
         "https://bit.ly/2RXsprv",
         "https://bit.ly/2O622yD",
         "https://bit.ly/38FaBbs",
@@ -17,19 +18,19 @@ class Restaurant extends React.Component {
       category: ["Vegetarian", "Breakfast"],
       price: 17,
       likes: 201,
-      time: 20,
+      deliverytime: 20,
       menu: [
         {
           name: "Gimme some spring rolls",
-          foodCategory: "Appetizer",
+          category: "Appetizer",
           price: 10
         },
-        { name: "Dragonball", foodCategory: "Appetizer", price: 20 },
-        { name: "Pure Coconut", foodCategory: "Main Dish", price: 30 },
-        { name: "Give me food", foodCategory: "Main Dish", price: 40 },
-        { name: "I'm hungrry", foodCategory: "Dessert", price: 50 },
-        { name: "Chocolate fudge brownie", foodCategory: "Dessert", price: 60 },
-        { name: "Bintang", foodCategory: "Drinks", price: 1 }
+        { name: "Dragonball", category: "Appetizer", price: 20 },
+        { name: "Pure Coconut", category: "Main Dish", price: 30 },
+        { name: "Give me food", category: "Main Dish", price: 40 },
+        { name: "I'm hungrry", category: "Dessert", price: 50 },
+        { name: "Chocolate fudge brownie", category: "Dessert", price: 60 },
+        { name: "Bintang", category: "Drinks", price: 1 }
       ]
     },
     currentBasket: [],
@@ -79,7 +80,7 @@ class Restaurant extends React.Component {
             </span>
             <span className="time">
               <i className="fas fa-clock"></i>
-              {this.state.restaurant.time} min
+              {this.state.restaurant.deliverytime} min
             </span>
           </div>
         </div>

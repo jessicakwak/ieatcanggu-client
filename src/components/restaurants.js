@@ -6,39 +6,71 @@ class Restaurants extends React.Component {
   state = {
     restaurants: [
       {
-        imgUrl: "https://bit.ly/2vx8SGX",
+        images: [
+          "https://bit.ly/2vx8SGX",
+          "https://bit.ly/2RXsprv",
+          "https://bit.ly/2O622yD",
+          "https://bit.ly/38FaBbs",
+          "https://bit.ly/2RATsdq"
+        ],
         name: "Bella Italia",
         category: ["Italian"],
         price: 20,
         likes: 347,
-        time: 15
+        deliverytime: 15
       },
       {
-        imgUrl: "https://bit.ly/2u17mMF",
+        images: [
+          "https://bit.ly/2u17mMF",
+          "https://bit.ly/2RXsprv",
+          "https://bit.ly/2O622yD",
+          "https://bit.ly/38FaBbs",
+          "https://bit.ly/2RATsdq"
+        ],
         name: "Peloton",
         category: ["Vegetarian", "Breakfast"],
         price: 17,
         likes: 201,
-        time: 20
+        deliverytime: 20
       },
       {
-        imgUrl: "https://bit.ly/2RyB1Ww",
+        images: [
+          "https://bit.ly/2RyB1Ww",
+          "https://bit.ly/2RXsprv",
+          "https://bit.ly/2O622yD",
+          "https://bit.ly/38FaBbs",
+          "https://bit.ly/2RATsdq"
+        ],
         name: "Nüde",
         category: ["Burger", "Vegetarian"],
         price: 22,
         likes: 959,
-        time: 12
+        deliverytime: 12
       },
       {
-        imgUrl: "https://bit.ly/2uDvBke",
+        images: [
+          "https://bit.ly/2uDvBke",
+          "https://bit.ly/2RXsprv",
+          "https://bit.ly/2O622yD",
+          "https://bit.ly/38FaBbs",
+          "https://bit.ly/2RATsdq"
+        ],
         name: "Burgerz",
         category: ["Burger"],
         price: 19,
         likes: 53,
-        time: 35
+        deliverytime: 35
       }
     ]
   };
+
+  componentWillMount() {
+    {
+      /*
+      /*axios please get all the restaurants
+    */
+    }
+  }
 
   render() {
     return (

@@ -12,7 +12,7 @@ class Thumbnail extends React.Component {
       <a href="/restaurant" className="restaurant">
         <div
           className="photo"
-          style={{ backgroundImage: `url(${this.state.restaurant.imgUrl})` }}
+          style={{ backgroundImage: `url(${this.state.restaurant.images[0]})` }}
         ></div>
         <h3>{this.state.restaurant.name}</h3>
         <ul className="categories">
@@ -35,7 +35,7 @@ class Thumbnail extends React.Component {
           </span>
           <span className="time">
             <i className="fas fa-clock"></i>
-            {this.state.restaurant.time} min
+            {this.state.restaurant.deliverytime} min
           </span>
         </div>
       </a>

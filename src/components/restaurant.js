@@ -1,6 +1,7 @@
 import React from "react";
 import Gallery from "./gallery";
 import Menu from "./menu";
+import Basket from "./basket";
 
 class Restaurant extends React.Component {
   // hardcoded as of now, but will replace with actual data from DB
@@ -64,26 +65,7 @@ class Restaurant extends React.Component {
           </div>
         </div>
         <Menu menu={this.state.restaurant.menu} />
-        <div id="basket">
-          <h2>Your Basket</h2>
-          <ul>
-            <li>
-              <i className="fas fa-minus"></i>
-              <span className="name">Avocado Madness</span>
-              <span className="price">$12</span>
-            </li>
-            <li>
-              <i className="fas fa-minus"></i>
-              <span className="name">Tutti Frutti</span>
-              <span className="price">$10</span>
-            </li>
-          </ul>
-          <div id="total">
-            <span>Total</span>
-            <span className="price">$22</span>
-            <button>Place Order</button>
-          </div>
-        </div>
+        <Basket />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "../styles/global.css";
 import Restaurants from "./restaurants";

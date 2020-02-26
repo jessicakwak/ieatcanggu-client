@@ -7,6 +7,10 @@ class Thumbnail extends React.Component {
   componentWillReceiveProps(nextProp) {
     this.setState({ restaurant: nextProp.restaurant });
   }
+  //This will be done after we add a menu schema
+  // calculateAvg = menu => {
+  //   return menu.map(e => e.price).reduce((t, i) => t + i) / menu.length;
+  // };
   render() {
     return (
       <a href="/restaurant" className="restaurant">
@@ -18,8 +22,8 @@ class Thumbnail extends React.Component {
         <ul className="categories">
           {this.state.restaurant.category.map((e, i) => {
             return (
-              <li key={i} className={e}>
-                {e}
+              <li key={i} className={e.name}>
+                {e.name}
               </li>
             );
           })}

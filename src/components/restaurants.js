@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import NavBar from "./nav";
 import Thumbnail from "./thumbnail";
 
@@ -65,11 +66,13 @@ class Restaurants extends React.Component {
   };
 
   componentWillMount() {
-    {
-      /*
-      /*axios please get all the restaurants
-    */
-    }
+    axios
+      .get("https://team03-deliveroo-api.herokuapp.com/restaurants")
+      .then(res => {
+        this.setState({ restaurants: res.data });
+        // console.log(res.data.category);
+      })
+      .catch(err => console.log(err));
   }
 
   render() {

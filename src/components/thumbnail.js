@@ -18,7 +18,7 @@ class Thumbnail extends React.Component {
         <ul className="categories">
           {this.state.restaurant.category.map((e, i) => {
             return (
-              <li style={{ background: "#DD3C3E" }} key={i}>
+              <li key={i} className={e}>
                 {e}
               </li>
             );

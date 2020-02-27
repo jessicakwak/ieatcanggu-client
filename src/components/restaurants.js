@@ -10,7 +10,7 @@ class Restaurants extends React.Component {
 
   componentWillMount() {
     axios
-      .get("https://team03-deliveroo-api.herokuapp.com/restaurants")
+      .get(`https://team03-deliveroo-api.herokuapp.com/restaurants`)
       .then(res => {
         this.setState({ restaurants: res.data });
       })

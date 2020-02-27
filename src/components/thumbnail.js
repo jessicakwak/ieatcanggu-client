@@ -6,14 +6,17 @@ class Thumbnail extends React.Component {
   };
   componentWillReceiveProps(nextProp) {
     this.setState({ restaurant: nextProp.restaurant });
+    console.log(nextProp.restaurant);
   }
-  //This will be done after we add a menu schema
-  // calculateAvg = menu => {
-  //   return menu.map(e => e.price).reduce((t, i) => t + i) / menu.length;
-  // };
+  calculateAvg = menu => {
+    return menu.map(e => e.price).reduce((t, i) => t + i) / menu.length;
+  };
   render() {
     return (
-      <a href="/restaurant" className="restaurant">
+      <a
+        href={`/restaurant/${this.state.restaurant._id}`}
+        className="restaurant"
+      >
         <div
           className="photo"
           style={{ backgroundImage: `url(${this.state.restaurant.images[0]})` }}
@@ -31,7 +34,7 @@ class Thumbnail extends React.Component {
         <div className="info">
           <span className="price">
             <i className="fas fa-dollar-sign"></i>
-            {this.state.restaurant.price}
+            {this.calculateAvg(this.state.restaurant.menu).toFixed(0)}
           </span>
           <span className="likes">
             <i className="fas fa-thumbs-up"></i>

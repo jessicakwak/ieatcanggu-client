@@ -12,7 +12,6 @@ class App extends React.Component {
         <Switch>
           <Route path="/restaurant/:id" component={Restaurant} />
           {/*Will use the line above. Line below to be deleted(just for testing purposes)*/}
-          <Route path="/restaurant" component={Restaurant} />
           <Route path="/" component={Restaurants} />
         </Switch>
       </BrowserRouter>

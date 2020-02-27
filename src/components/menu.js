@@ -17,7 +17,7 @@ class Menu extends React.Component {
         <h3>Appetizer</h3>
         <ul>
           {this.state.menu
-            .filter(x => x.category == "Appetizer")
+            .filter(x => x.category.name == "Appetizer")
             .map((e, i) => {
               return (
                 <li>
@@ -35,7 +35,7 @@ class Menu extends React.Component {
         <h3>Main Dish</h3>
         <ul>
           {this.state.menu
-            .filter(x => x.category == "Main Dish")
+            .filter(x => x.category.name == "Main Dish")
             .map((e, i) => {
               return (
                 <li>
@@ -54,7 +54,7 @@ class Menu extends React.Component {
         <h3>Dessert</h3>
         <ul>
           {this.state.menu
-            .filter(x => x.category == "Dessert")
+            .filter(x => x.category.name == "Dessert")
             .map((e, i) => {
               return (
                 <li>
@@ -72,7 +72,7 @@ class Menu extends React.Component {
         <h3>Drinks</h3>
         <ul>
           {this.state.menu
-            .filter(x => x.category == "Drinks")
+            .filter(x => x.category.name == "Drinks")
             .map((e, i) => {
               return (
                 <li>

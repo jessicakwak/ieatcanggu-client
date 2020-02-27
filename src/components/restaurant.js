@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Gallery from "./gallery";
 import Menu from "./menu";
 import Basket from "./basket";
@@ -38,7 +39,15 @@ class Restaurant extends React.Component {
   };
   componentWillMount() {
     {
-      /*axios please get detail restaurant info for specific id*/
+      axios
+        .get(
+          `https://team03-deliveroo-api.herokuapp.com/restaurants/${this.props.match.params.id}`
+        )
+        .then(res => {
+          this.setState({ restaurant: res.data });
+          console.log(res.data);
+        })
+        .catch(err => console.log(err));
     }
   }
 
@@ -66,7 +75,7 @@ class Restaurant extends React.Component {
           <Gallery images={this.state.restaurant.images} />
           <ul className="categories">
             {this.state.restaurant.category.map((e, i) => {
-              return <li className={e}>{e}</li>;
+              return <li className={e.name}>{e.name}</li>;
             })}
           </ul>
           <div className="info">

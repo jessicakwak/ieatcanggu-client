@@ -51,6 +51,10 @@ class Restaurant extends React.Component {
     }
   }
 
+  calculateAvg = menu => {
+    return menu.map(e => e.price).reduce((t, i) => t + i) / menu.length;
+  };
+
   addBasket = food => {
     let basket = this.state.currentBasket;
     basket.push({ key: basket.length + 1, name: food.name, price: food.price });
@@ -81,7 +85,7 @@ class Restaurant extends React.Component {
           <div className="info">
             <span className="price">
               <i className="fas fa-dollar-sign"></i>
-              {this.state.restaurant.price}
+              {this.calculateAvg(this.state.restaurant.menu).toFixed(0)}
             </span>
             <span className="likes">
               <i className="fas fa-thumbs-up"></i>

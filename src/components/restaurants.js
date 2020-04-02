@@ -16,6 +16,7 @@ class Restaurants extends React.Component {
     searched: [],
     searchKey: "",
     selectedType: "",
+    selectedFeature: "",
     map: {
       key: {
         key: "AIzaSyBKMVj4gaJLU9GTV1zOaWQj7ggKVbXQep0"
@@ -72,11 +73,8 @@ class Restaurants extends React.Component {
     this.setState({
       searched: this.state.restaurants.filter(r => {
         return (
-          (r.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-            r.description
-              .toLowerCase()
-              .includes(e.target.value.toLowerCase())) &&
-          r.type.map(n => n.name).includes(this.state.selectedType)
+          r.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          r.description.toLowerCase().includes(e.target.value.toLowerCase())
         );
       }),
       searchKey: e.target.value.toLowerCase()
@@ -89,17 +87,44 @@ class Restaurants extends React.Component {
         searched: this.state.restaurants.filter(i => {
           return (
             i.type.map(t => t.name).includes(e.target.value) &&
-            i.name.toLowerCase().includes(this.state.searchKey)
+            (i.name.toLowerCase().includes(this.state.searchKey) ||
+              i.description.toLowerCase().includes(this.state.searchKey))
           );
         }),
         selectedType: e.target.value
       });
     } else {
       this.setState({
-        searched: this.state.restaurants.filter(k =>
-          k.name.toLowerCase().includes(this.state.searchKey)
+        searched: this.state.restaurants.filter(
+          k =>
+            k.name.toLowerCase().includes(this.state.searchKey) ||
+            k.description.toLowerCase().includes(this.state.searchKey)
         ),
         selectedType: ""
+      });
+    }
+  };
+
+  featureSearch = e => {
+    if (e.target.value != "All") {
+      this.setState({
+        searched: this.state.restaurants.filter(i => {
+          return (
+            i.features.map(t => t.name).includes(e.target.value) &&
+            (i.name.toLowerCase().includes(this.state.searchKey) ||
+              i.description.toLowerCase().includes(this.state.searchKey))
+          );
+        }),
+        selectedFeature: e.target.value
+      });
+    } else {
+      this.setState({
+        searched: this.state.restaurants.filter(
+          k =>
+            k.name.toLowerCase().includes(this.state.searchKey) ||
+            k.description.toLowerCase().includes(this.state.searchKey)
+        ),
+        selectedFeature: ""
       });
     }
   };
@@ -142,7 +167,11 @@ class Restaurants extends React.Component {
   render() {
     return (
       <div className="container">
-        <Navigation search={this.search} typeSearch={this.typeSearch} />
+        <Navigation
+          search={this.search}
+          typeSearch={this.typeSearch}
+          featureSearch={this.featureSearch}
+        />
 
         <div className="display" style={{ overflow: "hidden" }}>
           <Grid container>

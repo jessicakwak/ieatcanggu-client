@@ -47,7 +47,7 @@ class Navigation extends React.Component {
             })}
           </select>
           <label for="features">Features</label>
-          <select id="features">
+          <select id="features" onChange={this.props.featureSearch}>
             <option value="All" selected>
               All
             </option>

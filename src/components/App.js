@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Restaurants from "./Restaurants";
+import Restaurants from "./restaurants";
 import Restaurant from "./restaurant";
 import "../styles/global.css";
 

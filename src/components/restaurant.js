@@ -6,7 +6,6 @@ import RestauDetailHeader from "./restauDetailHeader";
 import RestauSummary from "./restauSummary";
 import Pin from "./pin";
 import "../styles/restaurantDetails.css";
-import "../styles/display.css";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import GoogleMap from "google-map-react";

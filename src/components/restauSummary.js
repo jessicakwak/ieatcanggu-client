@@ -85,7 +85,7 @@ class RestauSummary extends React.Component {
                   ) : this.state.restaurant.price == 2 ? (
                     <p className="comment">70K-150K per dish</p>
                   ) : (
-                    <p className="comment">20K-60K per dish</p>
+                    <p className="comment">20K-80K per dish</p>
                   )}
                 </div>
               </Grid>

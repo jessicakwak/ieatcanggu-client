@@ -59,7 +59,7 @@ class Restaurants extends React.Component {
     } else {
       this.setState({
         //iPhone X, pixel 2XL 0.46, 0.49
-        wHeight: window.innerHeight * 0.6,
+        wHeight: window.innerHeight * 0.56,
         mapHeight: window.innerHeight * 0.25
       });
     }
@@ -158,7 +158,7 @@ class Restaurants extends React.Component {
     } else {
       this.setState({
         //iPhone X, pixel 2XL 0.46, 0.49
-        wHeight: window.innerHeight * 0.6,
+        wHeight: window.innerHeight * 0.56,
         mapHeight: window.innerHeight * 0.25
       });
     }

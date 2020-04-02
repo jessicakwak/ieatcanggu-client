@@ -37,7 +37,7 @@ class Navigation extends React.Component {
       <>
         <NavBrand />
         <div className="filters">
-          <label for="cuisine">Cuisine Type</label>
+          <label for="cuisine">Cuisine</label>
           <select id="cuisine" onChange={this.props.typeSearch}>
             <option value="All" selected>
               All

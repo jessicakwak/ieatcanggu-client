@@ -11,6 +11,7 @@
 .restauDetails {
   position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .summary {
@@ -119,8 +120,9 @@ a:hover {
 }
 
 .detailMap {
-  padding: 5%;
   height: 50vh;
+  overflow: hidden;
+  padding: 5%;
 }
 
 .mainReview h3 {

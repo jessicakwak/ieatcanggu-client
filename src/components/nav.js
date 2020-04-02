@@ -1,50 +1,70 @@
 import React from "react";
 
-class NavBar extends React.Component {
+import axios from "axios";
+import "../styles/nav.css";
+import NavBrand from "./topNav";
+
+class Navigation extends React.Component {
+  state = {
+    types: [],
+    features: []
+  };
+  componentWillMount() {
+    axios
+      .get(`${process.env.REACT_APP_API}/types`)
+      .then(res => {
+        this.setState({
+          types: res.data
+        });
+      })
+      .catch(err => {
+        console.log({ err });
+      });
+
+    axios
+      .get(`${process.env.REACT_APP_API}/features`)
+      .then(res => {
+        this.setState({
+          features: res.data
+        });
+      })
+      .catch(err => {
+        console.log({ err });
+      });
+  }
   render() {
     return (
-      <nav>
-        <div
-          id="logo"
-          style={{ backgroundImage: "url('https://bit.ly/2S2G7JA')" }}
-        ></div>
-        <ul>
-          <li>
-            <a href="/" style={{ borderColor: "#DD3C3E" }}>
-              <span style={{ color: "#DD3C3E" }}>Italian</span>
-            </a>
-          </li>
-          <li>
-            <a href="/" style={{ borderColor: "#3A3335" }}>
-              <span style={{ color: "#3A3335" }}>Burger</span>
-            </a>
-          </li>
-          <li>
-            <a href="/" style={{ borderColor: "#40C9A2" }}>
-              <span style={{ color: "#40C9A2" }}>Vegetarian</span>
-            </a>
-          </li>
-          <li>
-            <a href="/" style={{ borderColor: "#F2B430" }}>
-              <span style={{ color: "#F2B430" }}>Breakfast</span>
-            </a>
-          </li>
-          <li>
-            <a href="/" style={{ borderColor: "#590348" }}>
-              <span style={{ color: "#590348" }}>Japanese</span>
-            </a>
-          </li>
-        </ul>
-        <select>
-          <option value="">Sort by:</option>
-          <option value="">Price</option>
-          <option value="">Delivery Time</option>
-          <option value="">Likes</option>
-        </select>
-        <input type="text" placeholder="Search..." />
-      </nav>
+      <>
+        <NavBrand />
+        <div className="filters">
+          <label for="cuisine">Cuisine Type</label>
+          <select id="cuisine" onChange={this.props.typeSearch}>
+            <option value="All" selected>
+              All
+            </option>
+            {this.state.types.map(e => {
+              return <option value={e.name}>{e.name}</option>;
+            })}
+          </select>
+          <label for="features">Features</label>
+          <select id="features">
+            <option value="All" selected>
+              All
+            </option>
+            {this.state.features.map(e => {
+              return <option value={e.name}>{e.name}</option>;
+            })}
+          </select>
+          <input
+            type="text"
+            className="search"
+            placeholder="Search..."
+            onChange={this.props.search}
+          />
+        </div>
+      </>
     );
   }
 }
 
-export default NavBar;
+export default Navigation;

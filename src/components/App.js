@@ -1,9 +1,8 @@
 import React from "react";
-import axios from "axios";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import "../styles/global.css";
-import Restaurants from "./restaurants";
+import Restaurants from "./Restaurants";
 import Restaurant from "./restaurant";
+import "../styles/global.css";
 
 class App extends React.Component {
   render() {
@@ -11,7 +10,6 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route path="/restaurant/:id" component={Restaurant} />
-          {/*Will use the line above. Line below to be deleted(just for testing purposes)*/}
           <Route path="/" component={Restaurants} />
         </Switch>
       </BrowserRouter>

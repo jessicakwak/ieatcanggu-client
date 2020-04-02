@@ -1,0 +1,104 @@
+nav {
+  padding: 0px 20px;
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-column-gap: 10px;
+}
+
+nav .logo {
+  width: 160%;
+  height: 40px;
+  background-image: url("../assets/logo.svg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+/* filters */
+
+.filters {
+  padding: 10px 50px;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.filters button {
+  height: 33px;
+  font-size: 14px;
+  padding: 7px 12px;
+  background: white;
+  border: 1px solid #e2e2e2;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: tomato;
+  border-color: tomato;
+  color: white;
+}
+
+.filters select {
+  height: 34px;
+  width: auto;
+  font-size: 14px;
+  background: white;
+  border: 1px solid #e2e2e2;
+  cursor: pointer;
+  border-radius: 3px;
+  min-width: 100px;
+  margin: 0 20px;
+  box-sizing: border-box;
+}
+
+.filters label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #dd3c3e;
+}
+
+.filters .search {
+  min-width: 250px;
+}
+
+.filters input {
+  height: 34px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #e2e2e2;
+  width: 100px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.filters .search input:focus {
+  border-color: #00988f;
+}
+
+.filters ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.filters li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.filters a {
+  padding: 10px 10px 10px;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  border: 1px solid #e8e3e3;
+  border-radius: 4px;
+}

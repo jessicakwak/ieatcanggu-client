@@ -52,18 +52,19 @@ class Restaurants extends React.Component {
 
   search = e => {
     // console.log(this.state.selectedType == "");
-    let restauCopy;
-    if (this.state.selectedType != "" || this.state.selectedFeature != "") {
-      restauCopy = this.state.searched;
-    } else {
-      restauCopy = this.state.restaurants;
-    }
+    let restauCopy = this.state.restaurants;
+
     restauCopy = restauCopy.filter(r => {
       return (
-        r.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        r.description.toLowerCase().includes(e.target.value.toLowerCase())
+        (r.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          r.description.toLowerCase().includes(e.target.value.toLowerCase())) &&
+        r.type.map(t => t.name).includes(this.state.selectedType) &&
+        r.features
+          .map(e => e.name)
+          .filter(f => f.includes(this.state.selectedFeature))
       );
     });
+
     this.setState({
       searched: restauCopy,
       searchKey: e.target.value.toLowerCase()
@@ -76,6 +77,9 @@ class Restaurants extends React.Component {
         searched: this.state.restaurants.filter(i => {
           return (
             i.type.map(t => t.name).includes(e.target.value) &&
+            i.features
+              .map(f => f.name)
+              .filter(j => j.includes(this.state.selectedFeature)) &&
             (i.name.toLowerCase().includes(this.state.searchKey) ||
               i.description.toLowerCase().includes(this.state.searchKey))
           );
@@ -86,8 +90,11 @@ class Restaurants extends React.Component {
       this.setState({
         searched: this.state.restaurants.filter(
           k =>
-            k.name.toLowerCase().includes(this.state.searchKey) ||
-            k.description.toLowerCase().includes(this.state.searchKey)
+            k.features
+              .map(f => f.name)
+              .filter(j => j.includes(this.state.selectedFeature)) &&
+            (k.name.toLowerCase().includes(this.state.searchKey) ||
+              k.description.toLowerCase().includes(this.state.searchKey))
         ),
         selectedType: ""
       });
@@ -99,6 +106,9 @@ class Restaurants extends React.Component {
       this.setState({
         searched: this.state.restaurants.filter(i => {
           return (
+            i.type
+              .map(f => f.name)
+              .filter(j => j.includes(this.state.selectedType)) &&
             i.features.map(t => t.name).includes(e.target.value) &&
             (i.name.toLowerCase().includes(this.state.searchKey) ||
               i.description.toLowerCase().includes(this.state.searchKey))
@@ -110,8 +120,11 @@ class Restaurants extends React.Component {
       this.setState({
         searched: this.state.restaurants.filter(
           k =>
-            k.name.toLowerCase().includes(this.state.searchKey) ||
-            k.description.toLowerCase().includes(this.state.searchKey)
+            k.type
+              .map(f => f.name)
+              .filter(j => j.includes(this.state.selectedType)) &&
+            (k.name.toLowerCase().includes(this.state.searchKey) ||
+              k.description.toLowerCase().includes(this.state.searchKey))
         ),
         selectedFeature: ""
       });

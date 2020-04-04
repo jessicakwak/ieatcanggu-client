@@ -35,7 +35,8 @@ class Restaurant extends React.Component {
         lng: 115.14
       },
       zoom: 15
-    }
+    },
+    vHeight: 0
   };
   componentWillMount() {
     axios
@@ -58,12 +59,22 @@ class Restaurant extends React.Component {
         this.setState({ restaurant: res.data, map: restauLatLng });
       })
       .catch(err => console.log(err));
+    this.setState({ vHeight: window.innerHeight * 0.95 });
   }
+  componentDidMount() {
+    window.addEventListener("resize", this.updateDimensions);
+  }
+  updateDimensions = () => {
+    this.setState({ vHeight: window.innerHeight * 0.95 });
+  };
   render() {
     return (
       <>
         <NavBrand />
-        <div className="restauDetails">
+        <div
+          className="restauDetails"
+          style={{ height: `${this.state.vHeight}px` }}
+        >
           <RestauDetailHeader restaurant={this.state.restaurant} />
           <Gallery images={this.state.restaurant.images} />
           <div className="restauInfo">

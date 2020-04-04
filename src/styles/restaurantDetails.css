@@ -1,3 +1,9 @@
+.restauDetails {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .mainImg {
   background-size: cover;
   height: 60.9vh;
@@ -6,12 +12,6 @@
 .otherImg {
   background-size: cover;
   height: 30vh;
-}
-
-.restauDetails {
-  position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .summary {

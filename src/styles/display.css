@@ -157,6 +157,10 @@ li.Indonesian {
   background-color: black;
 }
 
+li.Vegan {
+  background-color: #1abd00;
+}
+
 .region {
   text-transform: uppercase;
   font-size: 0.6rem;

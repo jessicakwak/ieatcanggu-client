@@ -78,7 +78,7 @@ class RestauSummary extends React.Component {
                     return <span key={i}>$</span>;
                   })}
                   {this.state.restaurant.price === 4 ? (
-                    <p className="comment">100-180K+ per dish</p>
+                    <p className="comment">100-200K+ per dish</p>
                   ) : this.state.restaurant.price === 3 ? (
                     <p className="comment">90-150K per dish</p>
                   ) : this.state.restaurant.price === 2 ? (

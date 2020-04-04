@@ -34,6 +34,8 @@ class Restaurants extends React.Component {
     axios
       .get(`${process.env.REACT_APP_API}/restaurants`)
       .then(res => {
+        res.data = res.data.sort((a, b) => b.lat - a.lat && b.lng - a.lng);
+        console.log(res.data);
         this.setState({
           restaurants: res.data,
           searched: res.data

@@ -44,25 +44,7 @@ class Restaurants extends React.Component {
         console.log({ err });
       });
 
-    if (window.innerWidth > 960) {
-      //bigger than ipad (ipad pro and desktop, vertical maps)
-      this.setState({
-        wHeight: window.innerHeight - 100,
-        mapHeight: window.innerHeight - 100
-      });
-    } else if (window.innerWidth <= 960 && window.innerWidth > 781) {
-      //tablet,bigger than most of phones (ipad, surface etc)
-      this.setState({
-        wHeight: window.innerHeight * 0.58,
-        mapHeight: window.innerHeight * 0.32
-      });
-    } else {
-      this.setState({
-        //iPhone X, pixel 2XL 0.46, 0.49
-        wHeight: window.innerHeight * 0.56,
-        mapHeight: window.innerHeight * 0.25
-      });
-    }
+    this.updateDimensions();
   }
 
   componentDidMount() {
@@ -143,23 +125,35 @@ class Restaurants extends React.Component {
   };
 
   updateDimensions = () => {
-    if (window.innerWidth > 960) {
-      //bigger than ipad (ipad pro and desktop, vertical maps)
+    if (window.innerWidth >= 960) {
       this.setState({
-        wHeight: window.innerHeight - 100,
-        mapHeight: window.innerHeight - 100
+        //vertical map
+        wHeight: window.innerHeight * 0.89,
+        mapHeight: window.innerHeight * 0.89
       });
-    } else if (window.innerWidth <= 960 && window.innerWidth > 781) {
-      //tablet,bigger than most of phones (ipad, surface etc)
+    } else if (window.innerWidth < 960 && window.innerWidth >= 658) {
       this.setState({
-        wHeight: window.innerHeight * 0.6,
+        //vertical map
+        wHeight: window.innerHeight * 0.59,
         mapHeight: window.innerHeight * 0.3
+      });
+    } else if (window.innerWidth < 658 && window.innerWidth >= 600) {
+      this.setState({
+        //vertical map
+        wHeight: window.innerHeight * 0.55,
+        mapHeight: window.innerHeight * 0.3
+      });
+    } else if (window.innerWidth < 600 && window.innerWidth >= 400) {
+      this.setState({
+        //vertical map
+        wHeight: window.innerHeight * 0.6,
+        mapHeight: window.innerHeight * 0.25
       });
     } else {
       this.setState({
-        //iPhone X, pixel 2XL 0.46, 0.49
-        wHeight: window.innerHeight * 0.56,
-        mapHeight: window.innerHeight * 0.25
+        //vertical map
+        wHeight: window.innerHeight * 0.61,
+        mapHeight: window.innerHeight * 0.2
       });
     }
   };

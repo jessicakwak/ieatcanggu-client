@@ -8,3 +8,39 @@ body {
 select {
   font-size: 50px;
 }
+
+li.Pizza {
+  background-color: #c80b93;
+}
+
+li.Italian {
+  background-color: #e56e00;
+}
+
+li.Cafe {
+  background-color: #406aff;
+}
+
+li.Healthy {
+  background-color: #02c7b9;
+}
+
+li.American {
+  background-color: #ff3317;
+}
+
+li.Japanese {
+  background-color: #001d83;
+}
+
+li.Indonesian {
+  background-color: black;
+}
+
+li.Vegan {
+  background-color: #1abd00;
+}
+
+li.Breakfast {
+  background-color: #ffd250;
+}

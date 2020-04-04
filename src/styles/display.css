@@ -22,6 +22,7 @@
   text-indent: 1px;
   text-overflow: "";
   color: tomato;
+  text-decoration: underline;
 }
 
 .sort select:focus {
@@ -127,38 +128,6 @@
 
 .features li:hover .tooltiptxt {
   visibility: visible;
-}
-
-li.Pizza {
-  background-color: #c80b93;
-}
-
-li.Italian {
-  background-color: #f2b430;
-}
-
-li.Cafe {
-  background-color: #406aff;
-}
-
-li.Healthy {
-  background-color: #02c7b9;
-}
-
-li.American {
-  background-color: #ff3317;
-}
-
-li.Japanese {
-  background-color: #001d83;
-}
-
-li.Indonesian {
-  background-color: black;
-}
-
-li.Vegan {
-  background-color: #1abd00;
 }
 
 .region {

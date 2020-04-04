@@ -137,28 +137,24 @@ class Restaurants extends React.Component {
         wHeight: window.innerHeight * 0.59,
         mapHeight: window.innerHeight * 0.3
       });
-      this.thumbnailLeave();
     } else if (window.innerWidth < 658 && window.innerWidth >= 600) {
       this.setState({
         //vertical map
         wHeight: window.innerHeight * 0.55,
         mapHeight: window.innerHeight * 0.3
       });
-      this.thumbnailLeave();
     } else if (window.innerWidth < 600 && window.innerWidth >= 400) {
       this.setState({
         //vertical map
         wHeight: window.innerHeight * 0.6,
         mapHeight: window.innerHeight * 0.25
       });
-      this.thumbnailLeave();
     } else {
       this.setState({
         //vertical map
         wHeight: window.innerHeight * 0.61,
         mapHeight: window.innerHeight * 0.2
       });
-      this.thumbnailLeave();
     }
   };
 
@@ -189,8 +185,6 @@ class Restaurants extends React.Component {
                           restaurant={r}
                           thumbnailHover={this.thumbnailHover}
                           thumbnailLeave={this.thumbnailLeave}
-                          showAllLabel={this.showAllLabel}
-                          hideAllLabel={this.hideAllLabel}
                         />
                       );
                     })}

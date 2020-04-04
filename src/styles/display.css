@@ -7,12 +7,15 @@ body {
 
 .container {
   overflow: hidden;
+  position: relative;
 }
 
 .thumbnails {
   padding: 2% 10%;
   height: 10px;
   overflow: auto;
+  position: absolute;
+  bottom: 0;
 }
 
 .card {

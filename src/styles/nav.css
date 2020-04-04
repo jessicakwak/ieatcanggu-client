@@ -7,7 +7,7 @@ nav {
 
 nav .logo {
   width: 160%;
-  height: 40px;
+  height: 5vh;
   background-image: url("../assets/logo.svg");
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -18,29 +18,12 @@ nav .logo {
 /* filters */
 
 .filters {
-  padding: 10px 50px;
+  padding: 1vh 3vh;
   border-bottom: 1px solid #e2e2e2;
 }
 
-.filters button {
-  height: 33px;
-  font-size: 14px;
-  padding: 7px 12px;
-  background: white;
-  border: 1px solid #e2e2e2;
-  margin-right: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.filters button:hover {
-  background-color: tomato;
-  border-color: tomato;
-  color: white;
-}
-
 .filters select {
-  height: 34px;
+  height: 4vh;
   width: auto;
   font-size: 14px;
   background: white;
@@ -63,8 +46,8 @@ nav .logo {
 }
 
 .filters input {
-  height: 34px;
-  padding: 10px;
+  height: 4vh;
+  padding: 0 10px;
   font-size: 14px;
   border-radius: 3px;
   border: 1px solid #e2e2e2;
@@ -102,3 +85,59 @@ nav .logo {
   border: 1px solid #e8e3e3;
   border-radius: 4px;
 }
+@media (max-width: 700px) {
+  .filters {
+    text-align: center;
+    padding: 0.8vh 0.8vw;
+  }
+}
+@media (max-width: 657px) {
+  .filters input {
+    margin-top: 0.5vh;
+    width: 58vw;
+  }
+}
+
+@media (max-width: 410px) {
+  .filters label {
+    margin-left: 0.8vw;
+  }
+}
+
+@media (max-width: 399px) {
+  .filters label {
+    margin-left: 20vw;
+  }
+  .filters select {
+    width: 40vw;
+  }
+  #cuisine {
+    margin-bottom: 0.5vh;
+  }
+  .filters input {
+    width: 80vw;
+  }
+}
+
+/* @media (max-width: 657px) {
+  .filters {
+    padding: 2vw 0.5vw;
+  }
+  .filters input {
+    margin-top: 0.8vh;
+  }
+}
+
+@media (max-width: 437px) {
+  .filters {
+    text-align: center;
+    padding: 2vw 0.5vh;
+  }
+  .filters label {
+    padding-left: 3vw;
+  }
+  .filters select {
+    margin: 0.5vh;
+    width: 5vw;
+  }
+} */

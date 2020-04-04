@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Restaurants from "./restaurants";
 import Restaurant from "./restaurant";
+import "../styles/global.css";
 
 class App extends React.Component {
   render() {

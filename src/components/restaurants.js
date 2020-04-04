@@ -185,7 +185,7 @@ class Restaurants extends React.Component {
       restauCopy.sort((a, b) => a.price - b.price);
     } else if (e.target.value == 1) {
       restauCopy.sort((a, b) => b.price - a.price);
-    } else {
+    } else if (e.target.value == 2) {
       restauCopy.sort((a, b) => b.rating - a.rating);
     }
     this.setState({ searched: restauCopy });

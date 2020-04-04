@@ -158,6 +158,10 @@ class Restaurants extends React.Component {
     }
   };
 
+  sortByPriceAsc = () => {};
+
+  sortByPriceDsc = () => {};
+
   render() {
     return (
       <div className="container">
@@ -178,6 +182,15 @@ class Restaurants extends React.Component {
                     overflow: "auto"
                   }}
                 >
+                  <div className="sort">
+                    <span>Sort by</span>
+                    <select>
+                      <option>Price ▲</option>
+                      <option>Price ▼</option>
+                      <option>Rating ▲</option>
+                      <option>Rating ▼</option>
+                    </select>
+                  </div>
                   <Grid container>
                     {this.state.searched.map(r => {
                       return (

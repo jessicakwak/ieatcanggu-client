@@ -10,6 +10,34 @@ body {
   position: relative;
 }
 
+.sort {
+  text-align: right;
+  font-size: 0.8rem;
+  padding: 3% 2% 0;
+}
+
+.sort span {
+  margin-right: 1%;
+}
+
+.sort select {
+  background-color: white;
+  border: none;
+  font-size: 0.8rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+.sort select:focus {
+  outline: none;
+}
+
+.sort selct:checked {
+  color: tomato;
+}
+
 .thumbnails {
   padding: 2% 10%;
   height: 10px;

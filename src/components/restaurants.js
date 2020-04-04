@@ -124,8 +124,20 @@ class Restaurants extends React.Component {
     this.setState(theseRestau);
   };
 
+  showAllLabel = () => {
+    let theseRestau = this.state.restaurants;
+    theseRestau.map(e => (e.selected = true));
+    this.setState({ restaurants: theseRestau });
+  };
+  hideAllLabel = () => {
+    let theseRestau = this.state.restaurants;
+    theseRestau.map(e => (e.selected = false));
+    this.setState({ restaurants: theseRestau });
+  };
+
   updateDimensions = () => {
     if (window.innerWidth >= 960) {
+      this.hideAllLabel();
       this.setState({
         //vertical map
         wHeight: window.innerHeight * 0.89,
@@ -137,24 +149,28 @@ class Restaurants extends React.Component {
         wHeight: window.innerHeight * 0.59,
         mapHeight: window.innerHeight * 0.3
       });
+      this.showAllLabel();
     } else if (window.innerWidth < 658 && window.innerWidth >= 600) {
       this.setState({
         //vertical map
         wHeight: window.innerHeight * 0.55,
         mapHeight: window.innerHeight * 0.3
       });
+      this.showAllLabel();
     } else if (window.innerWidth < 600 && window.innerWidth >= 400) {
       this.setState({
         //vertical map
         wHeight: window.innerHeight * 0.6,
         mapHeight: window.innerHeight * 0.25
       });
+      this.showAllLabel();
     } else {
       this.setState({
         //vertical map
         wHeight: window.innerHeight * 0.61,
         mapHeight: window.innerHeight * 0.2
       });
+      this.showAllLabel();
     }
   };
 
@@ -185,6 +201,8 @@ class Restaurants extends React.Component {
                           restaurant={r}
                           thumbnailHover={this.thumbnailHover}
                           thumbnailLeave={this.thumbnailLeave}
+                          showAllLabel={this.showAllLabel}
+                          hideAllLabel={this.hideAllLabel}
                         />
                       );
                     })}

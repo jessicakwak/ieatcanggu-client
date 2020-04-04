@@ -9,6 +9,16 @@ class Thumbnails extends React.Component {
   componentWillReceiveProps(nextProp) {
     this.setState({ restaurant: nextProp.restaurant });
   }
+  detectSizeHover = id => {
+    if (window.innerWidth >= 960) {
+      this.props.thumbnailHover(id);
+    }
+  };
+  detectSizeLeave = () => {
+    if (window.innerWidth >= 960) {
+      this.props.thumbnailLeave();
+    }
+  };
   render() {
     return (
       <Grid item xs={12} sm={6} lg={4}>
@@ -20,10 +30,10 @@ class Thumbnails extends React.Component {
           <div
             className="card"
             onMouseEnter={x => {
-              this.props.thumbnailHover(this.state.restaurant._id);
+              this.detectSizeHover(this.state.restaurant._id);
             }}
             onMouseLeave={x => {
-              this.props.thumbnailLeave();
+              this.detectSizeLeave();
             }}
           >
             <div

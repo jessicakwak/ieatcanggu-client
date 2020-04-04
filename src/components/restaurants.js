@@ -57,6 +57,12 @@ class Restaurants extends React.Component {
     window.addEventListener("resize", this.updateDimensions);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.searched != this.state.searched) {
+      this.forceUpdate();
+    }
+  }
+
   search = e => {
     // console.log(this.state.selectedType == "");
     let restauCopy = this.state.restaurants;
@@ -253,7 +259,7 @@ class Restaurants extends React.Component {
                     center={this.state.map.center}
                     zoom={this.state.map.zoom}
                   >
-                    {this.state.restaurants.map((r, i) => {
+                    {this.state.searched.map((r, i) => {
                       return <Pin restaurant={r} lat={r.lat} lng={r.lng} />;
                     })}
                   </GoogleMap>

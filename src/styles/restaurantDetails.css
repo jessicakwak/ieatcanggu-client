@@ -17,7 +17,7 @@
 .summary {
   margin: 2% 2% 2% 4%;
   float: left;
-  width: 500px;
+  width: 600px;
   position: relative;
   display: inline-block;
 }
@@ -313,16 +313,21 @@ li.Indonesian {
   }
   .detailMap {
     height: 25vh;
-    padding: 2%;
+    padding: 0%;
   }
   .priceAndRating {
     padding: 3% 0% 0%;
   }
 }
 
+@media (max-width: 779px) {
+  .summary {
+    width: 500px;
+  }
+}
+
 @media (max-width: 669px) {
   .summary {
-    margin-left: 4%;
     width: 480px;
   }
 }

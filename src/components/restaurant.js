@@ -52,7 +52,7 @@ class Restaurant extends React.Component {
             lat: res.data.lat,
             lng: res.data.lng
           },
-          zoom: 15
+          zoom: 16
         };
         res.data.selected = true;
         res.data.detail = true;

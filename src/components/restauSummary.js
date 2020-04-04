@@ -80,9 +80,9 @@ class RestauSummary extends React.Component {
                   {this.state.restaurant.price === 4 ? (
                     <p className="comment">100-180K+ per dish</p>
                   ) : this.state.restaurant.price === 3 ? (
-                    <p className="comment">90-200K per dish</p>
+                    <p className="comment">90-150K per dish</p>
                   ) : this.state.restaurant.price === 2 ? (
-                    <p className="comment">70K-150K per dish</p>
+                    <p className="comment">70K-120K per dish</p>
                   ) : (
                     <p className="comment">20K-80K per dish</p>
                   )}

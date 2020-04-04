@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Navigation from "./nav";
 import Thumbnails from "./thumbnails";
 import Pin from "./pin";
@@ -52,19 +51,27 @@ class Restaurants extends React.Component {
   }
 
   search = e => {
+    // console.log(this.state.selectedType == "");
+    let restauCopy;
+    if (this.state.selectedType != "" || this.state.selectedFeature != "") {
+      restauCopy = this.state.searched;
+    } else {
+      restauCopy = this.state.restaurants;
+    }
+    restauCopy = restauCopy.filter(r => {
+      return (
+        r.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        r.description.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+    });
     this.setState({
-      searched: this.state.restaurants.filter(r => {
-        return (
-          r.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-          r.description.toLowerCase().includes(e.target.value.toLowerCase())
-        );
-      }),
+      searched: restauCopy,
       searchKey: e.target.value.toLowerCase()
     });
   };
 
   typeSearch = e => {
-    if (e.target.value != "All") {
+    if (e.target.value !== "All") {
       this.setState({
         searched: this.state.restaurants.filter(i => {
           return (
@@ -88,7 +95,7 @@ class Restaurants extends React.Component {
   };
 
   featureSearch = e => {
-    if (e.target.value != "All") {
+    if (e.target.value !== "All") {
       this.setState({
         searched: this.state.restaurants.filter(i => {
           return (
@@ -114,7 +121,7 @@ class Restaurants extends React.Component {
   thumbnailHover = id => {
     let theseRestau = this.state.restaurants;
     theseRestau.map(e => (e.selected = false));
-    theseRestau.find(e => e._id == id).selected = true;
+    theseRestau.find(e => e._id === id).selected = true;
     this.setState({ restaurants: theseRestau });
   };
 
@@ -158,9 +165,19 @@ class Restaurants extends React.Component {
     }
   };
 
-  sortByPriceAsc = () => {};
-
-  sortByPriceDsc = () => {};
+  sort = e => {
+    // console.log(e.target.value);
+    let restauCopy = this.state.searched;
+    if (e.target.value == 0) {
+      restauCopy.sort((a, b) => a.price - b.price);
+    } else if (e.target.value == 1) {
+      restauCopy.sort((a, b) => b.price - a.price);
+    } else {
+      restauCopy.sort((a, b) => b.rating - a.rating);
+    }
+    this.setState({ searched: restauCopy });
+    // this.forceUpdate();
+  };
 
   render() {
     return (
@@ -184,11 +201,11 @@ class Restaurants extends React.Component {
                 >
                   <div className="sort">
                     <span>Sort by</span>
-                    <select>
-                      <option>Price ▲</option>
-                      <option>Price ▼</option>
-                      <option>Rating ▲</option>
-                      <option>Rating ▼</option>
+                    <select onChange={this.sort}>
+                      <option default>Default</option>
+                      <option value="0">Price ▲</option>
+                      <option value="1">Price ▼</option>
+                      <option value="2">Rating ▼</option>
                     </select>
                   </div>
                   <Grid container>

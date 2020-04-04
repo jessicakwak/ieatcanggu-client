@@ -50,29 +50,29 @@ class Thumbnails extends React.Component {
                 {this.state.restaurant.features.map((t, i) => {
                   return (
                     <li className={t.name} key={i}>
-                      {t.name == "Quality Food" ? (
-                        <i class="fas fa-utensils">
-                          <span class="tooltiptxt">Quality food</span>
+                      {t.name === "Quality Food" ? (
+                        <i className="fas fa-utensils">
+                          <span className="tooltiptxt">Quality food</span>
                         </i>
-                      ) : t.name == "Good for kids" ? (
-                        <i class="fas fa-baby">
-                          <span class="tooltiptxt">Good for kids</span>
+                      ) : t.name === "Good for kids" ? (
+                        <i className="fas fa-baby">
+                          <span className="tooltiptxt">Good for kids</span>
                         </i>
-                      ) : t.name == "Working" ? (
-                        <i class="fas fa-laptop">
-                          <span class="tooltiptxt">Good for Working</span>
+                      ) : t.name === "Working" ? (
+                        <i className="fas fa-laptop">
+                          <span className="tooltiptxt">Good for Working</span>
                         </i>
-                      ) : t.name == "Happy Hour" ? (
-                        <i class="far fa-laugh-beam">
-                          <span class="tooltiptxt">Happy Hour</span>
+                      ) : t.name === "Happy Hour" ? (
+                        <i className="far fa-laugh-beam">
+                          <span className="tooltiptxt">Happy Hour</span>
                         </i>
-                      ) : t.name == "Cocktail" ? (
-                        <i class="fas fa-cocktail">
-                          <span class="tooltiptxt">Good Cocktail</span>
+                      ) : t.name === "Cocktail" ? (
+                        <i className="fas fa-cocktail">
+                          <span className="tooltiptxt">Good Cocktail</span>
                         </i>
-                      ) : t.name == "Date night" ? (
-                        <i class="fas fa-comments">
-                          <span class="tooltiptxt">Date Night</span>
+                      ) : t.name === "Date night" ? (
+                        <i className="fas fa-comments">
+                          <span className="tooltiptxt">Date Night</span>
                         </i>
                       ) : (
                         t.name
@@ -83,16 +83,16 @@ class Thumbnails extends React.Component {
               </ul>
               <div className="info">
                 <div className="price">
-                  {[...Array(this.state.restaurant.price)].map(e => {
-                    return <span>$</span>;
+                  {[...Array(this.state.restaurant.price)].map((e, i) => {
+                    return <span key={i}>$</span>;
                   })}
                 </div>
                 <div className="rating">
-                  {[...Array(this.state.restaurant.rating)].map(e => {
-                    return <i class="fas fa-star"></i>;
+                  {[...Array(this.state.restaurant.rating)].map((e, i) => {
+                    return <i className="fas fa-star" key={i}></i>;
                   })}
-                  {[...Array(5 - this.state.restaurant.rating)].map(e => {
-                    return <i class="far fa-star"></i>;
+                  {[...Array(5 - this.state.restaurant.rating)].map((e, i) => {
+                    return <i className="far fa-star" key={i}></i>;
                   })}
                 </div>
               </div>

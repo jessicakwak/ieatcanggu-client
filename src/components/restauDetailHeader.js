@@ -32,20 +32,20 @@ class RestauDetailHeader extends React.Component {
               );
             })}
           </ul>
-          <i class="fas fa-map-marker-alt"></i>
+          <i className="fas fa-map-marker-alt"></i>
           <span className="contactInfo">{this.state.restaurant.address}</span>
           <br />
-          <i class="fas fa-phone"></i>
+          <i className="fas fa-phone"></i>
           <span className="contactInfo">{this.state.restaurant.phone}</span>
           <span className="contactInfo">•</span>
-          <i class="fas fa-mouse-pointer"></i>
+          <i className="fas fa-mouse-pointer"></i>
           <a href={this.state.restaurant.website}>
             <span className="contactInfo">Website</span>
           </a>
         </div>
         <Link to="/">
           <span className="back">
-            Back to the list <i class="fas fa-chevron-right"></i>
+            Back to the list <i className="fas fa-chevron-right"></i>
           </span>
         </Link>
       </div>

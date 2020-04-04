@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
 class RestauSummary extends React.Component {
@@ -30,35 +29,35 @@ class RestauSummary extends React.Component {
                 {this.state.restaurant.features.map((t, i) => {
                   return (
                     <li className={t.name} key={i}>
-                      {t.name == "Quality Food" ? (
-                        <i class="fas fa-utensils">
+                      {t.name === "Quality Food" ? (
+                        <i className="fas fa-utensils">
                           <br />
-                          <span class="ftxt">Quality food</span>
+                          <span className="ftxt">Quality food</span>
                         </i>
-                      ) : t.name == "Good for kids" ? (
-                        <i class="fas fa-baby">
+                      ) : t.name === "Good for kids" ? (
+                        <i className="fas fa-baby">
                           <br />
-                          <span class="ftxt">Good for kids</span>
+                          <span className="ftxt">Good for kids</span>
                         </i>
-                      ) : t.name == "Working" ? (
-                        <i class="fas fa-laptop">
+                      ) : t.name === "Working" ? (
+                        <i className="fas fa-laptop">
                           <br />
-                          <span class="ftxt">Good for Working</span>
+                          <span className="ftxt">Good for Working</span>
                         </i>
-                      ) : t.name == "Happy Hour" ? (
-                        <i class="far fa-laugh-beam">
+                      ) : t.name === "Happy Hour" ? (
+                        <i className="far fa-laugh-beam">
                           <br />
-                          <span class="ftxt">Happy Hour</span>
+                          <span className="ftxt">Happy Hour</span>
                         </i>
-                      ) : t.name == "Cocktail" ? (
-                        <i class="fas fa-cocktail">
+                      ) : t.name === "Cocktail" ? (
+                        <i className="fas fa-cocktail">
                           <br />
-                          <span class="ftxt">Good Cocktail</span>
+                          <span className="ftxt">Good Cocktail</span>
                         </i>
-                      ) : t.name == "Date night" ? (
-                        <i class="fas fa-comments">
+                      ) : t.name === "Date night" ? (
+                        <i className="fas fa-comments">
                           <br />
-                          <span class="ftxt">Date Night</span>
+                          <span className="ftxt">Date Night</span>
                         </i>
                       ) : (
                         t.name
@@ -75,14 +74,14 @@ class RestauSummary extends React.Component {
               <Grid item xs={6}>
                 <div className="priceAndRating">
                   <span>Price Range: </span>
-                  {[...Array(this.state.restaurant.price)].map(e => {
-                    return <span>$</span>;
+                  {[...Array(this.state.restaurant.price)].map((e, i) => {
+                    return <span key={i}>$</span>;
                   })}
-                  {this.state.restaurant.price == 4 ? (
+                  {this.state.restaurant.price === 4 ? (
                     <p className="comment">100-180K+ per dish</p>
-                  ) : this.state.restaurant.price == 3 ? (
+                  ) : this.state.restaurant.price === 3 ? (
                     <p className="comment">90-200K per dish</p>
-                  ) : this.state.restaurant.price == 2 ? (
+                  ) : this.state.restaurant.price === 2 ? (
                     <p className="comment">70K-150K per dish</p>
                   ) : (
                     <p className="comment">20K-80K per dish</p>
@@ -92,20 +91,20 @@ class RestauSummary extends React.Component {
               <Grid item xs={6}>
                 <div className="priceAndRating">
                   <span>Rating: </span>
-                  {[...Array(this.state.restaurant.rating)].map(e => {
-                    return <i class="fas fa-star"></i>;
+                  {[...Array(this.state.restaurant.rating)].map((e, i) => {
+                    return <i className="fas fa-star" key={i}></i>;
                   })}
-                  {this.state.restaurant.rating == 5 ? (
+                  {this.state.restaurant.rating === 5 ? (
                     <p className="fav">
-                      Favorite! <i class="fas fa-grin-hearts"></i>
+                      Favorite! <i className="fas fa-grin-hearts"></i>
                     </p>
-                  ) : this.state.restaurant.rating == 4 ? (
+                  ) : this.state.restaurant.rating === 4 ? (
                     <p className="exc">
-                      Excellent <i class="far fa-grin-stars"></i>
+                      Excellent <i className="far fa-grin-stars"></i>
                     </p>
-                  ) : this.state.restaurant.rating == 3 ? (
+                  ) : this.state.restaurant.rating === 3 ? (
                     <p className="comment">Good</p>
-                  ) : this.state.restaurant.rating == 2 ? (
+                  ) : this.state.restaurant.rating === 2 ? (
                     <p className="comment">Ok</p>
                   ) : (
                     <p className="comment">

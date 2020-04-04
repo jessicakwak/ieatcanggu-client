@@ -37,20 +37,16 @@ class Navigation extends React.Component {
       <>
         <NavBrand />
         <div className="filters">
-          <label for="cuisine">Cuisine</label>
+          <label>Cuisine</label>
           <select id="cuisine" onChange={this.props.typeSearch}>
-            <option value="All" selected>
-              All
-            </option>
+            <option value="All">All</option>
             {this.state.types.map(e => {
               return <option value={e.name}>{e.name}</option>;
             })}
           </select>
-          <label for="features">Features</label>
+          <label>Features</label>
           <select id="features" onChange={this.props.featureSearch}>
-            <option value="All" selected>
-              All
-            </option>
+            <option value="All">All</option>
             {this.state.features.map(e => {
               return <option value={e.name}>{e.name}</option>;
             })}

@@ -92,7 +92,7 @@ class Restaurant extends React.Component {
                   })}
                   <a href={this.state.restaurant.menu}>
                     <li>
-                      View menu <i class="fas fa-chevron-right"></i>
+                      View menu <i className="fas fa-chevron-right"></i>
                     </li>
                   </a>
                 </ul>

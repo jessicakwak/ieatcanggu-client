@@ -34,9 +34,9 @@ class Gallery extends React.Component {
         </Grid>
         <Grid item xs={12} md={6}>
           <Grid container spacing={1}>
-            {this.state.images.map(j => {
+            {this.state.images.map((j, i) => {
               return (
-                <Grid item xs={3} md={6}>
+                <Grid item xs={3} md={6} key={i}>
                   <div
                     className="otherImg"
                     style={{

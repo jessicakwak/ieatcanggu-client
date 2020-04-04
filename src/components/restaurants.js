@@ -30,7 +30,7 @@ class Restaurants extends React.Component {
     mapHeight: 0
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     axios
       .get(`${process.env.REACT_APP_API}/restaurants`)
       .then(res => {
@@ -58,13 +58,12 @@ class Restaurants extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.searched != this.state.searched) {
+    if (prevState.searched !== this.state.searched) {
       this.forceUpdate();
     }
   }
 
   search = e => {
-    // console.log(this.state.selectedType == "");
     let restauCopy = this.state.restaurants;
 
     restauCopy = restauCopy.filter(r => {
@@ -192,17 +191,15 @@ class Restaurants extends React.Component {
   };
 
   sort = e => {
-    // console.log(e.target.value);
     let restauCopy = this.state.searched;
-    if (e.target.value == 0) {
+    if (e.target.value === "0") {
       restauCopy.sort((a, b) => a.price - b.price);
-    } else if (e.target.value == 1) {
+    } else if (e.target.value === "1") {
       restauCopy.sort((a, b) => b.price - a.price);
-    } else if (e.target.value == 2) {
+    } else if (e.target.value === "2") {
       restauCopy.sort((a, b) => b.rating - a.rating);
     }
     this.setState({ searched: restauCopy });
-    // this.forceUpdate();
   };
 
   render() {
@@ -235,12 +232,13 @@ class Restaurants extends React.Component {
                     </select>
                   </div>
                   <Grid container>
-                    {this.state.searched.map(r => {
+                    {this.state.searched.map((r, i) => {
                       return (
                         <Thumbnails
                           restaurant={r}
                           thumbnailHover={this.thumbnailHover}
                           thumbnailLeave={this.thumbnailLeave}
+                          key={i}
                         />
                       );
                     })}
@@ -260,7 +258,9 @@ class Restaurants extends React.Component {
                     zoom={this.state.map.zoom}
                   >
                     {this.state.searched.map((r, i) => {
-                      return <Pin restaurant={r} lat={r.lat} lng={r.lng} />;
+                      return (
+                        <Pin restaurant={r} lat={r.lat} lng={r.lng} key={i} />
+                      );
                     })}
                   </GoogleMap>
                 </div>

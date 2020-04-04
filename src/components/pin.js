@@ -6,14 +6,14 @@ class Pin extends React.Component {
     lat: this.props.lat,
     lng: this.props.lng
   };
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.setState({
       restaurant: this.props.restaurant,
       lat: this.props.lat,
       lng: this.props.lng
     });
   }
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({
       restaurant: this.props.restaurant,
       lat: this.props.lat,

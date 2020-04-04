@@ -6,7 +6,6 @@ import RestauDetailHeader from "./restauDetailHeader";
 import RestauSummary from "./restauSummary";
 import Pin from "./pin";
 import "../styles/restaurantDetails.css";
-import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import GoogleMap from "google-map-react";
 
@@ -38,7 +37,7 @@ class Restaurant extends React.Component {
     },
     vHeight: 0
   };
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     axios
       .get(
         `${process.env.REACT_APP_API}/restaurants/${this.props.match.params.id}`

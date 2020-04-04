@@ -6,7 +6,7 @@ class Thumbnails extends React.Component {
   state = {
     restaurant: this.props.restaurant
   };
-  componentWillReceiveProps(nextProp) {
+  UNSAFE_componentWillReceiveProps(nextProp, state) {
     this.setState({ restaurant: nextProp.restaurant });
   }
 

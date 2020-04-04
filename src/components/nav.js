@@ -9,7 +9,7 @@ class Navigation extends React.Component {
     types: [],
     features: []
   };
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     axios
       .get(`${process.env.REACT_APP_API}/types`)
       .then(res => {
@@ -40,15 +40,23 @@ class Navigation extends React.Component {
           <label>Cuisine</label>
           <select id="cuisine" onChange={this.props.typeSearch}>
             <option value="All">All</option>
-            {this.state.types.map(e => {
-              return <option value={e.name}>{e.name}</option>;
+            {this.state.types.map((e, i) => {
+              return (
+                <option value={e.name} key={i}>
+                  {e.name}
+                </option>
+              );
             })}
           </select>
           <label>Features</label>
           <select id="features" onChange={this.props.featureSearch}>
             <option value="All">All</option>
-            {this.state.features.map(e => {
-              return <option value={e.name}>{e.name}</option>;
+            {this.state.features.map((e, i) => {
+              return (
+                <option value={e.name} key={i}>
+                  {e.name}
+                </option>
+              );
             })}
           </select>
           <input

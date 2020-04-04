@@ -35,6 +35,12 @@ class Restaurants extends React.Component {
     axios
       .get(`${process.env.REACT_APP_API}/restaurants`)
       .then(res => {
+        if (window.innerWidth >= 960) {
+          res.data.map(e => (e.selected = false));
+        } else {
+          res.data.map(e => (e.selected = true));
+        }
+
         this.setState({
           restaurants: res.data,
           searched: res.data

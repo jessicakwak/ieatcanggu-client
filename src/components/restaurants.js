@@ -18,7 +18,7 @@ class Restaurants extends React.Component {
     selectedFeature: "",
     map: {
       key: {
-        key: "AIzaSyA2zALZWIPBhI-faRys04N0xBNwUxL3AT8"
+        key: "AIzaSyBKMVj4gaJLU9GTV1zOaWQj7ggKVbXQep0"
       },
       center: {
         lat: -8.655,

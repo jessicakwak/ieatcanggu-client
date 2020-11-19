@@ -150,3 +150,7 @@
   position: absolute;
   left: 2%;
 }
+
+.detailMap a{
+  text-decoration: none;
+}

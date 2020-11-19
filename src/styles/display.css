@@ -74,7 +74,7 @@
 }
 
 .details h3 {
-  margin: 0 2%;
+  margin: 4% 2% 0 2%;
 }
 
 .categories {
@@ -105,11 +105,6 @@
   margin-right: 5px;
 }
 
-.features i {
-  display: inline-block;
-  position: relative;
-  padding: 2%;
-}
 
 .tooltiptxt {
   visibility: hidden;

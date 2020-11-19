@@ -199,9 +199,6 @@ a:hover {
   color: #696969;
 }
 
-.details h3 {
-  margin: 0 2%;
-}
 
 .categories {
   padding: 0;
@@ -223,12 +220,13 @@ a:hover {
   font-size: 0.8rem;
   padding: 0;
   list-style: none;
-  margin: 2% 2%;
+  margin: 2% 2% 10% 2%;
 }
 
 .features li {
   display: inline-block;
   margin-right: 5px;
+  margin-bottom:5%
 }
 
 .features i {

@@ -9,7 +9,8 @@ class Navigation extends React.Component {
   
     this.state = {
       types: [],
-      features: []
+      features: [],
+      cities:[]
     };
   }
   
@@ -35,15 +36,24 @@ class Navigation extends React.Component {
       .catch(err => {
         console.log({ err });
       });
+      axios
+      .get(`${process.env.REACT_APP_API}/cities`)
+      .then(res => {
+        this.setState({
+          cities: res.data
+        });
+      })
+      .catch(err => {
+        console.log({ err });
+      });
   }
   render() {
     return (
       <>
         <NavBrand />
         <div className="filters">
-          <label>Cuisine</label>
           <select id="cuisine" onChange={this.props.filter}>
-            <option value="">All</option>
+            <option value="">Select Types</option>
             {this.state.types.map((e, i) => {
               return (
                 <option value={e.name} key={i}>
@@ -52,10 +62,19 @@ class Navigation extends React.Component {
               );
             })}
           </select>
-          <label>Features</label>
           <select id="features" onChange={this.props.filter}>
-          <option value="">All</option>
+          <option value="">Select Features</option>
             {this.state.features.map((e, i) => {
+              return (
+                <option value={e.name} key={i}>
+                  {e.name}
+                </option>
+              );
+            })}
+          </select>
+          <select id="city">
+          <option value="">Select city</option>
+            {this.state.cities.map((e, i) => {
               return (
                 <option value={e.name} key={i}>
                   {e.name}

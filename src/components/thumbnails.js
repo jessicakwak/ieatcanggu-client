@@ -27,7 +27,7 @@ const Thumbnails =(props)=> {
                 backgroundImage: `url(${restaurant.images[0]})`
               }}
             ></div>
-            <div className="region">{restaurant.city}</div>
+            <div className="region">{restaurant.city.name}</div>
             <div className="details">
               <h3>{restaurant.name}</h3>
               <p>{restaurant.description}</p>

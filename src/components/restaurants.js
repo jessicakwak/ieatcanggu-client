@@ -152,7 +152,7 @@ filter= e=>{
                     .filter(e=>
                       (e.name.toLowerCase().includes(this.state.searchKey)
                       ||e.description.toLowerCase().includes(this.state.searchKey)
-                      ||e.city.toLowerCase().includes(this.state.searchKey)
+                      ||e.city.name.toLowerCase().includes(this.state.searchKey)
                       ||e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.searchKey))
                       &&e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedType)
                       &&e.features.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedFeature)

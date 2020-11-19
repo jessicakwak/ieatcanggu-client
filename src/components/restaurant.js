@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import NavBrand from "./NavBrand";
-import Gallery from "./Gallery";
-import RestauDetailHeader from "./RestauDetailHeader";
-import RestauSummary from "./RestauSummary";
-import Pin from "./Pin";
+import Gallery from "./gallery";
+import RestauDetailHeader from "./restauDetailHeader";
+import RestauSummary from "./restauSummary";
+import Pin from "./pin";
 import "../styles/restaurantDetails.css";
 import Grid from "@material-ui/core/Grid";
 import GoogleMap from "google-map-react";

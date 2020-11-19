@@ -23,10 +23,10 @@ class Restaurants extends React.Component {
           key: process.env.REACT_APP_GOOGLEMAP_API
         },
         center: {
-          lat: -8.655,
+          lat: -8.650,
           lng: 115.14
         },
-        zoom: 14.4
+        zoom: 13.8
       },
       wHeight: 0,
       mapHeight: 0
@@ -150,18 +150,22 @@ filter= e=>{
                   <Grid container>
                     {this.state.restaurants
                     .filter(e=>
-                      e.name.toLowerCase().includes(this.state.searchKey)
-                      // &&e.type.map(e=>e.name).includes("pizza")
-                      // &&e.features.name.includes(this.state.selectedFeature)
+                      (e.name.toLowerCase().includes(this.state.searchKey)
+                      ||e.description.toLowerCase().includes(this.state.searchKey)
+                      ||e.city.toLowerCase().includes(this.state.searchKey)
+                      ||e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.searchKey))
+                      &&e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedType)
+                      &&e.features.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedFeature)
                       )
                     .map((r, i) => {
                       return (
+                        <>
                         <Thumbnails
                           restaurant={r}
                           thumbnailHover={this.thumbnailHover}
                           thumbnailLeave={this.thumbnailLeave}
                           key={i}
-                        />
+                        /></>
                       );
                     })}
                   </Grid>

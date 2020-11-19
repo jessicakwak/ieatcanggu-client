@@ -37,14 +37,8 @@ nav .logo {
   box-sizing: border-box;
 }
 
-.filters label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #dd3c3e;
-}
-
 .filters .search {
-  min-width: 250px;
+  min-width: 300px;
 }
 
 .filters input {
@@ -54,12 +48,12 @@ nav .logo {
   border-radius: 3px;
   border: 1px solid #e2e2e2;
   width: 100px;
-  margin-right: 10px;
+  margin: 0 10px;
   box-sizing: border-box;
   vertical-align: top;
 }
 
-.filters .search input:focus {
+.filters input:focus {
   border-color: #00988f;
 }
 

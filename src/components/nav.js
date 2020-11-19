@@ -72,7 +72,7 @@ class Navigation extends React.Component {
               );
             })}
           </select>
-          <select id="city">
+          <select id="city" onChange={this.props.filter}>
           <option value="">Select city</option>
             {this.state.cities.map((e, i) => {
               return (
@@ -85,7 +85,7 @@ class Navigation extends React.Component {
           <input
             type="text"
             className="search"
-            placeholder="Search..."
+            placeholder="Search any keywords"
             onChange={this.props.search}/>
         </div>
       </>

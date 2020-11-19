@@ -18,6 +18,7 @@ class Restaurants extends React.Component {
       searchKey: "",
       selectedType: "",
       selectedFeature: "",
+      selectedCity: "",
       map: {
         key: {
           key: process.env.REACT_APP_GOOGLEMAP_API
@@ -123,9 +124,13 @@ filter= e=>{
     this.setState({
       selectedType:e.target.value.toLowerCase()
     })
-  }else{
+  }else if(e.target.id=="features"){
     this.setState({
       selectedFeature:e.target.value.toLowerCase()
+    })
+  }else{
+    this.setState({
+      selectedCity:e.target.value.toLowerCase()
     })
   }
 }
@@ -156,6 +161,7 @@ filter= e=>{
                       ||e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.searchKey))
                       &&e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedType)
                       &&e.features.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedFeature)
+                      &&e.city.name.toLowerCase().includes(this.state.selectedCity)
                       )
                     .map((r, i) => {
                       return (

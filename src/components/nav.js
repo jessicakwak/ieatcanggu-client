@@ -42,8 +42,8 @@ class Navigation extends React.Component {
         <NavBrand />
         <div className="filters">
           <label>Cuisine</label>
-          <select id="cuisine">
-            <option value="All">All</option>
+          <select id="cuisine" onChange={this.props.filter}>
+            {/* <option value="">All</option> */}
             {this.state.types.map((e, i) => {
               return (
                 <option value={e.name} key={i}>
@@ -53,8 +53,7 @@ class Navigation extends React.Component {
             })}
           </select>
           <label>Features</label>
-          <select id="features">
-            <option value="All">All</option>
+          <select id="features" onChange={this.props.filter}>
             {this.state.features.map((e, i) => {
               return (
                 <option value={e.name} key={i}>
@@ -66,7 +65,8 @@ class Navigation extends React.Component {
           <input
             type="text"
             className="search"
-            placeholder="Search..."/>
+            placeholder="Search..."
+            onChange={this.props.search}/>
         </div>
       </>
     );

@@ -113,11 +113,27 @@ class Restaurants extends React.Component {
   //   }
   //   this.setState({ restaurants: restauCopy });
   // };
+  search = e =>{
+    this.setState({
+      searchKey:e.target.value.toLowerCase()
+    },)
+}
+filter= e=>{
+  if(e.target.id=="cuisine"){
+    this.setState({
+      selectedType:e.target.value.toLowerCase()
+    })
+  }else{
+    this.setState({
+      selectedFeature:e.target.value.toLowerCase()
+    })
+  }
+}
 
   render() {
     return (
 <>
-        <Navigation/>
+        <Navigation search={this.search} filter={this.filter}/>
         <div className="display">
           <Grid container>
             {/* for thumbnails */}
@@ -132,7 +148,13 @@ class Restaurants extends React.Component {
                 >
                  <Sort />
                   <Grid container>
-                    {this.state.restaurants.map((r, i) => {
+                    {this.state.restaurants
+                    .filter(e=>
+                      e.name.toLowerCase().includes(this.state.searchKey)
+                      // &&e.type.map(e=>e.name).includes("pizza")
+                      // &&e.features.name.includes(this.state.selectedFeature)
+                      )
+                    .map((r, i) => {
                       return (
                         <Thumbnails
                           restaurant={r}

@@ -2,20 +2,23 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 
 class Gallery extends React.Component {
-  state = {
-    images: this.props.images,
-    mainImage: this.props.images[0]
-  };
-
-  componentWillMount() {
-    this.setState({
+  constructor(props) {
+    super(props)
+  
+    this.state = {
       images: this.props.images,
       mainImage: this.props.images[0]
-    });
+    };
   }
 
-  componentWillReceiveProps(nextProp) {
-    this.setState({ images: nextProp.images, mainImage: nextProp.images[0] });
+  static getDerivedStateFromProps(props,state){
+    if(props.images!==state.images){
+      return {
+        images:props.images,
+        mainImage:props.images[0]
+      }
+    }
+    return null
   }
 
   changeMain = img => {

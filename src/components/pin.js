@@ -1,36 +1,18 @@
 import React from "react";
 
-class Pin extends React.Component {
-  state = {
-    restaurant: this.props.restaurant,
-    lat: this.props.lat,
-    lng: this.props.lng
-  };
-  UNSAFE_componentWillMount() {
-    this.setState({
-      restaurant: this.props.restaurant,
-      lat: this.props.lat,
-      lng: this.props.lng
-    });
-  }
-  UNSAFE_componentWillReceiveProps(props) {
-    this.setState({
-      restaurant: this.props.restaurant,
-      lat: this.props.lat,
-      lng: this.props.lng
-    });
-  }
-  render() {
+const Pin = (props)=> {
+  const {restaurant, lat, lng} = props
+
     return (
       <div
-        className={this.state.restaurant.selected ? "pin selected" : "pin"}
-        lat={this.state.lat}
-        lng={this.state.lng}
+        className={restaurant.selected ? "pin selected" : "pin"}
+        lat={lat}
+        lng={lng}
       >
-        <label>{this.state.restaurant.name}</label>
+        <label>{restaurant.name}</label>
       </div>
     );
-  }
+
 }
 
 export default Pin;

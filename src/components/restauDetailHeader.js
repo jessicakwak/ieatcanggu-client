@@ -1,30 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class RestauDetailHeader extends React.Component {
-  state = {
-    restaurant: {
-      name: "",
-      type: [],
-      address: "",
-      phone: "",
-      website: ""
-    }
-  };
-  componentWillMount() {
-    this.setState({ restaurant: this.props.restaurant });
-  }
-  componentWillReceiveProps(nextProp) {
-    this.setState({ restaurant: nextProp.restaurant });
-  }
-
-  render() {
+const RestauDetailHeader = (props)=> {
+  const {name, type, address, phone, website} = props.restaurant
     return (
       <div className="header">
         <div className="summary">
-          <h2>{this.state.restaurant.name}</h2>
+          <h2>{name}</h2>
           <ul className="categories restau">
-            {this.state.restaurant.type.map((t, i) => {
+            {type.map((t, i) => {
               return (
                 <li className={t.name} key={i}>
                   {t.name}
@@ -33,13 +17,13 @@ class RestauDetailHeader extends React.Component {
             })}
           </ul>
           <i className="fas fa-map-marker-alt"></i>
-          <span className="contactInfo">{this.state.restaurant.address}</span>
+          <span className="contactInfo">{address}</span>
           <br />
           <i className="fas fa-phone"></i>
-          <span className="contactInfo">{this.state.restaurant.phone}</span>
+          <span className="contactInfo">{phone}</span>
           <span className="contactInfo">•</span>
           <i className="fas fa-mouse-pointer"></i>
-          <a href={this.state.restaurant.website}>
+          <a href={website}>
             <span className="contactInfo">Website</span>
           </a>
         </div>
@@ -50,7 +34,7 @@ class RestauDetailHeader extends React.Component {
         </Link>
       </div>
     );
-  }
+
 }
 
 export default RestauDetailHeader;

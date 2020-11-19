@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class NavBrand extends React.Component {
-  render() {
+const NavBrand = ()=> {
     return (
       <nav>
         <Link to="/">
@@ -10,7 +9,6 @@ class NavBrand extends React.Component {
         </Link>
       </nav>
     );
-  }
 }
 
 export default NavBrand;

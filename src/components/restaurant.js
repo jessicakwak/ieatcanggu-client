@@ -1,43 +1,47 @@
 import React from "react";
 import axios from "axios";
-import NavBrand from "./topNav";
-import Gallery from "./gallery";
-import RestauDetailHeader from "./restauDetailHeader";
-import RestauSummary from "./restauSummary";
-import Pin from "./pin";
+import NavBrand from "./NavBrand";
+import Gallery from "./Gallery";
+import RestauDetailHeader from "./RestauDetailHeader";
+import RestauSummary from "./RestauSummary";
+import Pin from "./Pin";
 import "../styles/restaurantDetails.css";
 import Grid from "@material-ui/core/Grid";
 import GoogleMap from "google-map-react";
 
 class Restaurant extends React.Component {
-  state = {
-    restaurant: {
-      name: "",
-      images: [],
-      type: [],
-      features: [],
-      address: "",
-      phone: "",
-      website: "",
-      lat: 0,
-      lng: 0,
-      selected: true,
-      recommend: [],
-      menu: ""
-    },
-    map: {
-      key: {
-        key: "AIzaSyBKMVj4gaJLU9GTV1zOaWQj7ggKVbXQep0"
+  constructor(props) {
+    super(props)
+    this.state = {
+      restaurant: {
+        name: "",
+        images: [],
+        type: [],
+        features: [],
+        address: "",
+        phone: "",
+        website: "",
+        lat: 0,
+        lng: 0,
+        selected: true,
+        recommend: [],
+        menu: ""
       },
-      center: {
-        lat: -8.655,
-        lng: 115.14
+      map: {
+        key: {
+          key: process.env.REACT_APP_GOOGLEMAP_API
+        },
+        center: {
+          lat: -8.655,
+          lng: 115.14
+        },
+        zoom: 15
       },
-      zoom: 15
-    },
-    vHeight: 0
-  };
-  UNSAFE_componentWillMount() {
+      vHeight: 0
+    };
+  }
+
+  componentDidMount() {
     axios
       .get(
         `${process.env.REACT_APP_API}/restaurants/${this.props.match.params.id}`
@@ -59,13 +63,13 @@ class Restaurant extends React.Component {
       })
       .catch(err => console.log(err));
     this.setState({ vHeight: window.innerHeight * 0.95 });
-  }
-  componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
+
   updateDimensions = () => {
     this.setState({ vHeight: window.innerHeight * 0.95 });
   };
+  
   render() {
     return (
       <>

@@ -1,32 +1,15 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 
-class RestauSummary extends React.Component {
-  state = {
-    restaurant: {
-      features: [],
-      price: 0,
-      rating: 0
-    }
-  };
-
-  componentWillMount() {
-    this.setState({
-      restaurant: this.props.restaurant,
-      empty: this.props.empty
-    });
-  }
-  componentWillReceiveProps(nextProp) {
-    this.setState({ restaurant: nextProp.restaurant, empty: nextProp.empty });
-  }
-  render() {
+const RestauSummary = (props)=> {
+const {features, price, rating} = props.restaurant
     return (
       <div className="box">
         <Grid container>
           <Grid item xs={12} md={7}>
             <div className="topFeatures">
               <ul className="features">
-                {this.state.restaurant.features.map((t, i) => {
+                {features.map((t, i) => {
                   return (
                     <li className={t.name} key={i}>
                       {t.name === "Quality Food" ? (
@@ -74,14 +57,14 @@ class RestauSummary extends React.Component {
               <Grid item xs={6}>
                 <div className="priceAndRating">
                   <span>Price Range: </span>
-                  {[...Array(this.state.restaurant.price)].map((e, i) => {
+                  {[...Array(price)].map((e, i) => {
                     return <span key={i}>$</span>;
                   })}
-                  {this.state.restaurant.price === 4 ? (
+                  {price === 4 ? (
                     <p className="comment">100-200K+ per dish</p>
-                  ) : this.state.restaurant.price === 3 ? (
+                  ) : price === 3 ? (
                     <p className="comment">90-150K per dish</p>
-                  ) : this.state.restaurant.price === 2 ? (
+                  ) : price === 2 ? (
                     <p className="comment">70K-120K per dish</p>
                   ) : (
                     <p className="comment">20K-80K per dish</p>
@@ -91,20 +74,20 @@ class RestauSummary extends React.Component {
               <Grid item xs={6}>
                 <div className="priceAndRating">
                   <span>Rating: </span>
-                  {[...Array(this.state.restaurant.rating)].map((e, i) => {
+                  {[...Array(rating)].map((e, i) => {
                     return <i className="fas fa-star" key={i}></i>;
                   })}
-                  {this.state.restaurant.rating === 5 ? (
+                  {rating === 5 ? (
                     <p className="fav">
                       Favorite! <i className="fas fa-grin-hearts"></i>
                     </p>
-                  ) : this.state.restaurant.rating === 4 ? (
+                  ) : rating === 4 ? (
                     <p className="exc">
                       Excellent <i className="far fa-grin-stars"></i>
                     </p>
-                  ) : this.state.restaurant.rating === 3 ? (
+                  ) : rating === 3 ? (
                     <p className="comment">Good</p>
-                  ) : this.state.restaurant.rating === 2 ? (
+                  ) : rating === 2 ? (
                     <p className="comment">Ok</p>
                   ) : (
                     <p className="comment">
@@ -118,6 +101,6 @@ class RestauSummary extends React.Component {
         </Grid>
       </div>
     );
-  }
+
 }
 export default RestauSummary;

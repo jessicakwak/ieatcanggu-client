@@ -130,6 +130,7 @@ a:hover {
   margin-bottom: 2%;
 }
 
+
 .recommend {
   margin: 0;
 }
@@ -144,6 +145,7 @@ a:hover {
   text-decoration: underline;
   float: right;
   color: #898989;
+  margin-bottom:5%
 }
 
 .recommend li:nth-last-child(1):hover {

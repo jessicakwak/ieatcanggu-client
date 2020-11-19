@@ -1,15 +1,19 @@
 import React from "react";
-
 import axios from "axios";
 import "../styles/nav.css";
-import NavBrand from "./topNav";
+import NavBrand from "./NavBrand";
 
 class Navigation extends React.Component {
-  state = {
-    types: [],
-    features: []
-  };
-  UNSAFE_componentWillMount() {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      types: [],
+      features: []
+    };
+  }
+  
+  componentDidMount() {
     axios
       .get(`${process.env.REACT_APP_API}/types`)
       .then(res => {
@@ -38,7 +42,7 @@ class Navigation extends React.Component {
         <NavBrand />
         <div className="filters">
           <label>Cuisine</label>
-          <select id="cuisine" onChange={this.props.typeSearch}>
+          <select id="cuisine">
             <option value="All">All</option>
             {this.state.types.map((e, i) => {
               return (
@@ -49,7 +53,7 @@ class Navigation extends React.Component {
             })}
           </select>
           <label>Features</label>
-          <select id="features" onChange={this.props.featureSearch}>
+          <select id="features">
             <option value="All">All</option>
             {this.state.features.map((e, i) => {
               return (
@@ -62,9 +66,7 @@ class Navigation extends React.Component {
           <input
             type="text"
             className="search"
-            placeholder="Search..."
-            onChange={this.props.search}
-          />
+            placeholder="Search..."/>
         </div>
       </>
     );

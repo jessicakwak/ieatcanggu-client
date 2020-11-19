@@ -1,49 +1,50 @@
 import React from "react";
 import axios from "axios";
-import Navigation from "./nav";
-import Thumbnails from "./thumbnails";
-import Pin from "./pin";
-import "../styles/display.css";
-import "../styles/map.css";
+import Navigation from "./Nav";
+import Sort from './Sort'
+import Thumbnails from "./Thumbnails";
+import Pin from "./Pin";
 import GoogleMap from "google-map-react";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import "../styles/display.css";
+import "../styles/map.css";
 
 class Restaurants extends React.Component {
-  state = {
-    restaurants: [],
-    searched: [],
-    searchKey: "",
-    selectedType: "",
-    selectedFeature: "",
-    map: {
-      key: {
-        key: process.env.REACT_APP_GOOGLEMAP_API
+  constructor(props) {
+    super(props)
+    this.state = {
+      restaurants: [],
+      searchKey: "",
+      selectedType: "",
+      selectedFeature: "",
+      map: {
+        key: {
+          key: process.env.REACT_APP_GOOGLEMAP_API
+        },
+        center: {
+          lat: -8.655,
+          lng: 115.14
+        },
+        zoom: 14.4
       },
-      center: {
-        lat: -8.655,
-        lng: 115.14
-      },
-      zoom: 14.4
-    },
-    wHeight: 0,
-    mapHeight: 0
-  };
+      wHeight: 0,
+      mapHeight: 0
+    };
+  }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     axios
       .get(`${process.env.REACT_APP_API}/restaurants`)
       .then(res => {
         res.data = res.data.sort((a, b) => a.lat - b.lat && b.lng - a.lng);
-        let mapCopy = this.state.map;
-        mapCopy.center.lat =
-          res.data.map(e => e.lat).reduce((a, b) => a + b) / res.data.length;
-        mapCopy.center.lng =
-          res.data.map(e => e.lng).reduce((a, b) => a + b) / res.data.length;
+        // let mapCopy = this.state.map;
+        // mapCopy.center.lat =
+        //   res.data.map(e => e.lat).reduce((a, b) => a + b) / res.data.length;
+        // mapCopy.center.lng =
+        //   res.data.map(e => e.lng).reduce((a, b) => a + b) / res.data.length;
         this.setState({
           restaurants: res.data,
-          searched: res.data,
-          map: mapCopy
         });
       })
       .catch(err => {
@@ -51,97 +52,8 @@ class Restaurants extends React.Component {
       });
 
     this.updateDimensions();
-  }
-
-  componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.searched !== this.state.searched) {
-      this.forceUpdate();
-    }
-  }
-
-  search = e => {
-    let restauCopy = this.state.restaurants;
-
-    restauCopy = restauCopy.filter(r => {
-      return (
-        (r.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-          r.description.toLowerCase().includes(e.target.value.toLowerCase())) &&
-        r.type.map(t => t.name).includes(this.state.selectedType) &&
-        r.features
-          .map(e => e.name)
-          .filter(f => f.includes(this.state.selectedFeature))
-      );
-    });
-
-    this.setState({
-      searched: restauCopy,
-      searchKey: e.target.value.toLowerCase()
-    });
-  };
-
-  typeSearch = e => {
-    if (e.target.value !== "All") {
-      this.setState({
-        searched: this.state.restaurants.filter(i => {
-          return (
-            i.type.map(t => t.name).includes(e.target.value) &&
-            i.features
-              .map(f => f.name)
-              .filter(j => j.includes(this.state.selectedFeature)) &&
-            (i.name.toLowerCase().includes(this.state.searchKey) ||
-              i.description.toLowerCase().includes(this.state.searchKey))
-          );
-        }),
-        selectedType: e.target.value
-      });
-    } else {
-      this.setState({
-        searched: this.state.restaurants.filter(
-          k =>
-            k.features
-              .map(f => f.name)
-              .filter(j => j.includes(this.state.selectedFeature)) &&
-            (k.name.toLowerCase().includes(this.state.searchKey) ||
-              k.description.toLowerCase().includes(this.state.searchKey))
-        ),
-        selectedType: ""
-      });
-    }
-  };
-
-  featureSearch = e => {
-    if (e.target.value !== "All") {
-      this.setState({
-        searched: this.state.restaurants.filter(i => {
-          return (
-            i.type
-              .map(f => f.name)
-              .filter(j => j.includes(this.state.selectedType)) &&
-            i.features.map(t => t.name).includes(e.target.value) &&
-            (i.name.toLowerCase().includes(this.state.searchKey) ||
-              i.description.toLowerCase().includes(this.state.searchKey))
-          );
-        }),
-        selectedFeature: e.target.value
-      });
-    } else {
-      this.setState({
-        searched: this.state.restaurants.filter(
-          k =>
-            k.type
-              .map(f => f.name)
-              .filter(j => j.includes(this.state.selectedType)) &&
-            (k.name.toLowerCase().includes(this.state.searchKey) ||
-              k.description.toLowerCase().includes(this.state.searchKey))
-        ),
-        selectedFeature: ""
-      });
-    }
-  };
 
   thumbnailHover = id => {
     let theseRestau = this.state.restaurants;
@@ -190,29 +102,25 @@ class Restaurants extends React.Component {
     }
   };
 
-  sort = e => {
-    let restauCopy = this.state.searched;
-    if (e.target.value === "0") {
-      restauCopy.sort((a, b) => a.price - b.price);
-    } else if (e.target.value === "1") {
-      restauCopy.sort((a, b) => b.price - a.price);
-    } else if (e.target.value === "2") {
-      restauCopy.sort((a, b) => b.rating - a.rating);
-    }
-    this.setState({ searched: restauCopy });
-  };
+  // sort = e => {
+  //   let restauCopy = this.state.restaurants;
+  //   if (e.target.value === "0") {
+  //     restauCopy.sort((a, b) => a.price - b.price);
+  //   } else if (e.target.value === "1") {
+  //     restauCopy.sort((a, b) => b.price - a.price);
+  //   } else if (e.target.value === "2") {
+  //     restauCopy.sort((a, b) => b.rating - a.rating);
+  //   }
+  //   this.setState({ restaurants: restauCopy });
+  // };
 
   render() {
     return (
-      <div className="container">
-        <Navigation
-          search={this.search}
-          typeSearch={this.typeSearch}
-          featureSearch={this.featureSearch}
-        />
-
-        <div className="display" style={{ overflow: "hidden" }}>
+<>
+        <Navigation/>
+        <div className="display">
           <Grid container>
+            {/* for thumbnails */}
             <Box clone order={{ xs: 2, md: 1 }}>
               <Grid item xs={12} md={7} lg={8}>
                 <div
@@ -222,17 +130,9 @@ class Restaurants extends React.Component {
                     overflow: "auto"
                   }}
                 >
-                  <div className="sort">
-                    <span>Sort by</span>
-                    <select onChange={this.sort}>
-                      <option default>Default</option>
-                      <option value="0">Price ▲</option>
-                      <option value="1">Price ▼</option>
-                      <option value="2">Rating ▼</option>
-                    </select>
-                  </div>
+                 <Sort />
                   <Grid container>
-                    {this.state.searched.map((r, i) => {
+                    {this.state.restaurants.map((r, i) => {
                       return (
                         <Thumbnails
                           restaurant={r}
@@ -246,6 +146,7 @@ class Restaurants extends React.Component {
                 </div>
               </Grid>
             </Box>
+
             <Box clone order={{ xs: 1, md: 2 }}>
               <Grid item xs={12} md={5} lg={4}>
                 <div
@@ -257,7 +158,7 @@ class Restaurants extends React.Component {
                     center={this.state.map.center}
                     zoom={this.state.map.zoom}
                   >
-                    {this.state.searched.map((r, i) => {
+                    {this.state.restaurants.map((r, i) => {
                       return (
                         <Pin restaurant={r} lat={r.lat} lng={r.lng} key={i} />
                       );
@@ -268,7 +169,7 @@ class Restaurants extends React.Component {
             </Box>
           </Grid>
         </div>
-      </div>
+</>
     );
   }
 }

@@ -2,43 +2,37 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
-class Thumbnails extends React.Component {
-  state = {
-    restaurant: this.props.restaurant
-  };
-  UNSAFE_componentWillReceiveProps(nextProp, state) {
-    this.setState({ restaurant: nextProp.restaurant });
-  }
+const Thumbnails =(props)=> {
+  const {restaurant, thumbnailHover, thumbnailLeave} =props
 
-  render() {
     return (
       <Grid item xs={12} sm={6} lg={4}>
         <Link
           className="link"
-          to={`/restaurant/${this.state.restaurant._id}`}
-          key={this.state.restaurant._id}
+          to={`/restaurant/${restaurant._id}`}
+          key={restaurant._id}
         >
           <div
             className="card"
             onMouseEnter={x => {
-              this.props.thumbnailHover(this.state.restaurant._id);
+              thumbnailHover(restaurant._id);
             }}
             onMouseLeave={x => {
-              this.props.thumbnailLeave();
+              thumbnailLeave();
             }}
           >
             <div
               className="image"
               style={{
-                backgroundImage: `url(${this.state.restaurant.images[0]})`
+                backgroundImage: `url(${restaurant.images[0]})`
               }}
             ></div>
-            <div className="region">{this.state.restaurant.city}</div>
+            <div className="region">{restaurant.city}</div>
             <div className="details">
-              <h3>{this.state.restaurant.name}</h3>
-              <p>{this.state.restaurant.description}</p>
+              <h3>{restaurant.name}</h3>
+              <p>{restaurant.description}</p>
               <ul className="categories">
-                {this.state.restaurant.type.map((t, i) => {
+                {restaurant.type.map((t, i) => {
                   return (
                     <li className={t.name} key={i}>
                       {t.name}
@@ -47,7 +41,7 @@ class Thumbnails extends React.Component {
                 })}
               </ul>
               <ul className="features">
-                {this.state.restaurant.features.map((t, i) => {
+                {restaurant.features.map((t, i) => {
                   return (
                     <li className={t.name} key={i}>
                       {t.name === "Quality Food" ? (
@@ -83,15 +77,15 @@ class Thumbnails extends React.Component {
               </ul>
               <div className="info">
                 <div className="price">
-                  {[...Array(this.state.restaurant.price)].map((e, i) => {
+                  {[...Array(restaurant.price)].map((e, i) => {
                     return <span key={i}>$</span>;
                   })}
                 </div>
                 <div className="rating">
-                  {[...Array(this.state.restaurant.rating)].map((e, i) => {
+                  {[...Array(restaurant.rating)].map((e, i) => {
                     return <i className="fas fa-star" key={i}></i>;
                   })}
-                  {[...Array(5 - this.state.restaurant.rating)].map((e, i) => {
+                  {[...Array(5 - restaurant.rating)].map((e, i) => {
                     return <i className="far fa-star" key={i}></i>;
                   })}
                 </div>
@@ -101,7 +95,6 @@ class Thumbnails extends React.Component {
         </Link>
       </Grid>
     );
-  }
 }
 
 export default Thumbnails;

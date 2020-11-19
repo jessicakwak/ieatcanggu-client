@@ -31,11 +31,11 @@
   margin: 5% 1% 0 0;
 }
 
-a {
+.header a {
   color: #898989;
 }
 
-a:hover {
+.header a:hover {
   color: tomato;
 }
 

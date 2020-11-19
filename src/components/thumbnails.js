@@ -7,11 +7,7 @@ const Thumbnails =(props)=> {
 
     return (
       <Grid item xs={12} sm={6} lg={4}>
-        <Link
-          className="link"
-          to={`/restaurant/${restaurant._id}`}
-          key={restaurant._id}
-        >
+        
           <div
             className="card"
             onMouseEnter={x => {
@@ -20,7 +16,11 @@ const Thumbnails =(props)=> {
             onMouseLeave={x => {
               thumbnailLeave();
             }}
-          >
+          ><Link
+          className="link"
+          to={`/restaurant/${restaurant._id}`}
+          key={restaurant._id}
+        >
             <div
               className="image"
               style={{
@@ -91,8 +91,9 @@ const Thumbnails =(props)=> {
                 </div>
               </div>
             </div>
+            </Link>
           </div>
-        </Link>
+        
       </Grid>
     );
 }

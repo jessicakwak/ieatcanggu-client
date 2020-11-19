@@ -49,6 +49,7 @@
 
 .link {
   cursor: pointer;
+  color:black;
 }
 
 .link:link {

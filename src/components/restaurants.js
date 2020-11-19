@@ -103,17 +103,32 @@ class Restaurants extends React.Component {
     }
   };
 
-  // sort = e => {
-  //   let restauCopy = this.state.restaurants;
-  //   if (e.target.value === "0") {
-  //     restauCopy.sort((a, b) => a.price - b.price);
-  //   } else if (e.target.value === "1") {
-  //     restauCopy.sort((a, b) => b.price - a.price);
-  //   } else if (e.target.value === "2") {
-  //     restauCopy.sort((a, b) => b.rating - a.rating);
-  //   }
-  //   this.setState({ restaurants: restauCopy });
-  // };
+  sort = e => {
+    let restauCopy = this.state.restaurants;
+    if (e.target.value === "0") {
+      this.setState(prevState=>{
+        return {restaurants:prevState.restaurants.sort((a, b) => a.price - b.price)}
+      })
+    }
+     else if (e.target.value === "1") {
+      this.setState(prevState=>{
+        return {restaurants:prevState.restaurants.sort((a, b) => b.price - a.price)}
+      })
+    } else if (e.target.value === "2") {
+      this.setState(prevState=>{
+        return {restaurants:prevState.restaurants.sort((a, b) => b.rating - a.rating)}
+      })
+    } else if (e.target.value === "3") {
+      this.setState(prevState=>{
+        return {restaurants:prevState.restaurants.sort((a, b) => a.name>b.name?1:-1)}
+      })
+    }else if (e.target.value === "4") {
+      this.setState(prevState=>{
+        return {restaurants:prevState.restaurants.sort((a, b) => a.name>b.name?-1:1)}
+      })
+    }
+    this.setState({ restaurants: restauCopy });
+  };
   search = e =>{
     this.setState({
       searchKey:e.target.value.toLowerCase()
@@ -151,7 +166,7 @@ filter= e=>{
                     overflow: "auto"
                   }}
                 >
-                 <Sort />
+                 <Sort sort={this.sort}/>
                   <Grid container>
                     {this.state.restaurants
                     .filter(e=>

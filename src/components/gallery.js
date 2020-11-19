@@ -39,13 +39,14 @@ class Gallery extends React.Component {
           <Grid container spacing={1}>
             {this.state.images.map((j, i) => {
               return (
-                <Grid item xs={3} md={6} key={i}>
+                <Grid item xs={3} md={6}>
                   <div
                     className="otherImg"
                     style={{
                       backgroundImage: `url(${j})`
                     }}
                     onMouseOver={x => this.changeMain(j)}
+                    key={i}
                   ></div>
                 </Grid>
               );

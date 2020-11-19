@@ -108,13 +108,13 @@ class Restaurant extends React.Component {
                   center={this.state.map.center}
                   zoom={this.state.map.zoom}
                 >
-                  <a href={`https://maps.google.com/?q=${this.state.restaurant.lat},${this.state.restaurant.lng}`} target="_blank">
+                  {/* <a href={`https://maps.google.com/?q=${this.state.restaurant.lat},${this.state.restaurant.lng}`} target="_blank"> */}
                   <Pin
                     restaurant={this.state.restaurant}
                     lat={this.state.restaurant.lat}
                     lng={this.state.restaurant.lng}
                   />
-                  </a>
+                  {/* </a> */}
                   
                 </GoogleMap>
               </div>

@@ -63,8 +63,8 @@ class Restaurants extends React.Component {
     let thisMap=this.state.map;
     theseRestau.map(e => (e.selected = false));
     theseRestau.find(e => e._id === id).selected = true;
-    thisMap.center.lat=theseRestau.filter(e=>e._id==id)[0].lat
-    thisMap.center.lng=theseRestau.filter(e=>e._id==id)[0].lng
+    thisMap.center.lat=theseRestau.filter(e=>e._id===id)[0].lat
+    thisMap.center.lng=theseRestau.filter(e=>e._id===id)[0].lng
     this.setState({ restaurants: theseRestau });
   };
 
@@ -140,11 +140,11 @@ class Restaurants extends React.Component {
     },)
 }
 filter= e=>{
-  if(e.target.id=="cuisine"){
+  if(e.target.id==="cuisine"){
     this.setState({
       selectedType:e.target.value.toLowerCase()
     })
-  }else if(e.target.id=="features"){
+  }else if(e.target.id==="features"){
     this.setState({
       selectedFeature:e.target.value.toLowerCase()
     })
@@ -185,13 +185,12 @@ filter= e=>{
                       )
                     .map((r, i) => {
                       return (
-                        <>
                         <Thumbnails
                           restaurant={r}
                           thumbnailHover={this.thumbnailHover}
                           thumbnailLeave={this.thumbnailLeave}
                           key={i}
-                        /></>
+                        />
                       );
                     })}
                   </Grid>
@@ -199,7 +198,7 @@ filter= e=>{
               </Grid>
             </Box>
 
-            <Box clone order={{ xs: 1, md: 2 }}>
+            <Box clone order={{ xs: 1, md: 2 }} key="2">
               <Grid item xs={12} md={5} lg={4}>
                 <div
                   className="map"

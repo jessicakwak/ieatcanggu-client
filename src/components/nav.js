@@ -53,7 +53,7 @@ class Navigation extends React.Component {
         <NavBrand />
         <div className="filters">
           <select id="cuisine" onChange={this.props.filter}>
-            <option value="">Types</option>
+            <option value="">All types</option>
             {this.state.types.map((e, i) => {
               return (
                 <option value={e.name} key={i}>
@@ -63,7 +63,7 @@ class Navigation extends React.Component {
             })}
           </select>
           <select id="features" onChange={this.props.filter}>
-          <option value="">Features</option>
+          <option value="">All features</option>
             {this.state.features.map((e, i) => {
               return (
                 <option value={e.name} key={i}>
@@ -73,7 +73,7 @@ class Navigation extends React.Component {
             })}
           </select>
           <select id="city" onChange={this.props.filter}>
-          <option value="">Region</option>
+          <option value="">All regions</option>
             {this.state.cities.map((e, i) => {
               return (
                 <option value={e.name} key={i}>

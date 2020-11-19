@@ -35,7 +35,7 @@ class Restaurant extends React.Component {
           lat: -8.655,
           lng: 115.14
         },
-        zoom: 15
+        zoom: 13
       },
       vHeight: 0
     };

@@ -27,7 +27,7 @@ class Restaurants extends React.Component {
           lat: -8.650,
           lng: 115.14
         },
-        zoom: 13.8
+        zoom: 15
       },
       wHeight: 0,
       mapHeight: 0
@@ -39,13 +39,15 @@ class Restaurants extends React.Component {
       .get(`${process.env.REACT_APP_API}/restaurants`)
       .then(res => {
         res.data = res.data.sort((a, b) => a.lat - b.lat && b.lng - a.lng);
-        // let mapCopy = this.state.map;
-        // mapCopy.center.lat =
-        //   res.data.map(e => e.lat).reduce((a, b) => a + b) / res.data.length;
-        // mapCopy.center.lng =
-        //   res.data.map(e => e.lng).reduce((a, b) => a + b) / res.data.length;
+        let mapCopy = this.state.map;
+        mapCopy.center.lat =
+          res.data.map(e => e.lat).reduce((a, b) => a + b) / res.data.length;
+        mapCopy.center.lng =
+          res.data.map(e => e.lng).reduce((a, b) => a + b) / res.data.length;
         this.setState({
-          restaurants: res.data,
+          restaurants: res.data
+          ,
+          map:mapCopy
         });
       })
       .catch(err => {
@@ -58,8 +60,11 @@ class Restaurants extends React.Component {
 
   thumbnailHover = id => {
     let theseRestau = this.state.restaurants;
+    let thisMap=this.state.map;
     theseRestau.map(e => (e.selected = false));
     theseRestau.find(e => e._id === id).selected = true;
+    thisMap.center.lat=theseRestau.filter(e=>e._id==id)[0].lat
+    thisMap.center.lng=theseRestau.filter(e=>e._id==id)[0].lng
     this.setState({ restaurants: theseRestau });
   };
 
@@ -204,6 +209,7 @@ filter= e=>{
                     bootstrapURLKeys={this.state.map.key}
                     center={this.state.map.center}
                     zoom={this.state.map.zoom}
+                    key={new Date().getTime()}
                   >
                     {this.state.restaurants.map((r, i) => {
                       return (

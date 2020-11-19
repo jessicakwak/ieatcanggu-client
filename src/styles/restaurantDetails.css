@@ -233,6 +233,7 @@ a:hover {
   display: inline-block;
   position: relative;
   padding: 2%;
+  font-size:1.0rem;
 }
 
 .tooltiptxt {

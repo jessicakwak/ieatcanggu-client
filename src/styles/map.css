@@ -24,14 +24,15 @@
   border-radius: 4px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   height: 20px;
+  width:200px;
   visibility: visible;
 }
 
 .pin.selected label {
   background: white;
   color: tomato;
-  font-weight: bold;
-  font-size: 0.8rem;
+  /* font-weight: bold;
+  font-size: 0.8rem; */
   visibility: visible;
   border: 1.2px solid tomato;
 }

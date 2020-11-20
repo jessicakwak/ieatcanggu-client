@@ -24,19 +24,20 @@ class Gallery extends React.Component {
     this.setState({ mainImage: img });
   };
   render() {
+    const {images, mainImage} = this.state
     return (
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
           <div
             className="mainImg"
             style={{
-              backgroundImage: `url(${this.state.mainImage})`
+              backgroundImage: `url(${mainImage})`
             }}
           ></div>
         </Grid>
         <Grid item xs={12} md={6}>
           <Grid container spacing={1}>
-            {this.state.images.map((j, i) => {
+            {images.map((j, i) => {
               return (
                 <Grid item xs={3} md={6} key={i}>
                   <div

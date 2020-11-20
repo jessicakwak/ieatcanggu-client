@@ -72,29 +72,30 @@ class Restaurant extends React.Component {
   };
   
   render() {
+    const {restaurant,map, vHeight} = this.state
     return (
       <>
         <NavBrand />
         <div
           className="restauDetails"
-          style={{ height: `${this.state.vHeight}px` }}
+          style={{ height: `${vHeight}px` }}
         >
-          <RestauDetailHeader restaurant={this.state.restaurant} />
-          <Gallery images={this.state.restaurant.images} />
+          <RestauDetailHeader restaurant={restaurant} />
+          <Gallery images={restaurant.images} />
           <div className="restauInfo">
-            <RestauSummary restaurant={this.state.restaurant} />
+            <RestauSummary restaurant={restaurant} />
           </div>
           <Grid container>
             <Grid item xs={12} md={6}>
               <div className="mainReview">
-                <h3>{this.state.restaurant.description}</h3>
-                <p>{this.state.restaurant.review}</p>
+                <h3>{restaurant.description}</h3>
+                <p>{restaurant.review}</p>
                 <h3>You MUST try...</h3>
                 <ul className="recommend">
-                  {this.state.restaurant.recommend.map((e, i) => {
+                  {restaurant.recommend.map((e, i) => {
                     return <li key={i}>{e}</li>;
                   })}
-                  <a href={this.state.restaurant.menu}>
+                  <a href={restaurant.menu}>
                     <li>
                       View menu <i className="fas fa-chevron-right"></i>
                     </li>
@@ -105,15 +106,15 @@ class Restaurant extends React.Component {
             <Grid item xs={12} md={6}>
               <div className="detailMap">
                 <GoogleMap
-                  bootstrapURLKeys={this.state.map.key}
-                  center={this.state.map.center}
-                  zoom={this.state.map.zoom}
+                  bootstrapURLKeys={map.key}
+                  center={map.center}
+                  zoom={map.zoom}
                 >
-                  {/* <a href={`https://maps.google.com/?q=${this.state.restaurant.lat},${this.state.restaurant.lng}`} target="_blank"> */}
+                  {/* <a href={`https://maps.google.com/?q=${restaurant.lat},${restaurant.lng}`} target="_blank"> */}
                   <Pin
-                    restaurant={this.state.restaurant}
-                    lat={this.state.restaurant.lat}
-                    lng={this.state.restaurant.lng}
+                    restaurant={restaurant}
+                    lat={restaurant.lat}
+                    lng={restaurant.lng}
                   />
                   {/* </a> */}
                   

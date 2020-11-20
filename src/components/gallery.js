@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 class Gallery extends React.Component {
   constructor(props) {
     super(props)
-  
     this.state = {
       images: this.props.images,
       mainImage: this.props.images[0]

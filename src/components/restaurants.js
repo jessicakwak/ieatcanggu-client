@@ -156,6 +156,7 @@ filter= e=>{
 }
 
   render() {
+    const {restaurants, searchKey, selectedType,selectedFeature,selectedCity, wHeight, mapHeight, map} = this.state
     return (
 <>
         <Navigation search={this.search} filter={this.filter}/>
@@ -167,21 +168,21 @@ filter= e=>{
                 <div
                   className="thumnails"
                   style={{
-                    height: `${this.state.wHeight}px`,
+                    height: `${wHeight}px`,
                     overflow: "auto"
                   }}
                 >
                  <Sort sort={this.sort}/>
                   <Grid container>
-                    {this.state.restaurants
+                    {restaurants
                     .filter(e=>
-                      (e.name.toLowerCase().includes(this.state.searchKey)
-                      ||e.description.toLowerCase().includes(this.state.searchKey)
-                      ||e.city.name.toLowerCase().includes(this.state.searchKey)
-                      ||e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.searchKey))
-                      &&e.type.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedType)
-                      &&e.features.map(e=>e.name.toLowerCase()).join('').includes(this.state.selectedFeature)
-                      &&e.city.name.toLowerCase().includes(this.state.selectedCity)
+                      (e.name.toLowerCase().includes(searchKey)
+                      ||e.description.toLowerCase().includes(searchKey)
+                      ||e.city.name.toLowerCase().includes(searchKey)
+                      ||e.type.map(e=>e.name.toLowerCase()).join('').includes(searchKey))
+                      &&e.type.map(e=>e.name.toLowerCase()).join('').includes(selectedType)
+                      &&e.features.map(e=>e.name.toLowerCase()).join('').includes(selectedFeature)
+                      &&e.city.name.toLowerCase().includes(selectedCity)
                       )
                     .map((r, i) => {
                       return (
@@ -202,15 +203,15 @@ filter= e=>{
               <Grid item xs={12} md={5} lg={4}>
                 <div
                   className="map"
-                  style={{ height: `${this.state.mapHeight}px` }}
+                  style={{ height: `${mapHeight}px` }}
                 >
                   <GoogleMap
-                    bootstrapURLKeys={this.state.map.key}
-                    center={this.state.map.center}
-                    zoom={this.state.map.zoom}
+                    bootstrapURLKeys={map.key}
+                    center={map.center}
+                    zoom={map.zoom}
                     key={new Date().getTime()}
                   >
-                    {this.state.restaurants.map((r, i) => {
+                    {restaurants.map((r, i) => {
                       return (
                         <Pin restaurant={r} lat={r.lat} lng={r.lng} key={i} />
                       );
